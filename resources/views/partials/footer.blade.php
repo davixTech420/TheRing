@@ -19,25 +19,27 @@
         <div class="col-6 col-lg-5">
           <h6 class="text-white">Contacto</h6>
           <ul class="list-unstyled small mt-3 text-white-50">
-            <li class="mb-2"><i class="bi bi-geo-alt text-gold me-2"></i>Av. Principal 1234, Ciudad</li>
-            <li class="mb-2"><i class="bi bi-telephone text-gold me-2"></i>+52 555 123 4567</li>
-            <li class="mb-2"><i class="bi bi-envelope text-gold me-2"></i>hola@goldevents.com</li>
+            <li class="mb-2"><i class="bi bi-geo-alt text-gold me-2"></i>Cl. 40 Sur #411, Bogota</li>
+            <li class="mb-2"><i class="bi bi-telephone text-gold me-2"></i>+57 301 5717859</li>
+            <li class="mb-2"><i class="bi bi-envelope text-gold me-2"></i>hola@thering.com</li>
           </ul>
         </div>
       </div>
       <hr class="border-secondary mt-4" />
-      <p class="text-center text-white-50 small m-0">© <span id="year"></span> GoldEvents. Todos los derechos reservados.</p>
+      <p class="text-center text-white-50 small m-0">© <span id="year"></span> The Ring. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <!-- ===== WHATSAPP FLOTANTE ===== -->
-  <div class="wa-tip">¿Dudas? ¡Escríbenos!</div>
-  <a href="https://wa.me/525551234567?text=Hola%20GoldEvents,%20quiero%20información%20sobre%20un%20evento" target="_blank" class="wa-float" aria-label="Escríbenos por WhatsApp">
+  <div class="wa-tip">¿Dudas? ¡Escríbenos!</div>  
+  <a href="https://wa.me/573015717859?text=Hola%TheRing,%20quiero%20información%20sobre%20un%20evento" target="_blank" class="wa-float" aria-label="Escríbenos por WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
   <script>
+
     // ===== DATA =====
     const WA_NUMBER = "525551234567";
     const salones = [

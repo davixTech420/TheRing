@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GoldEvents — Salones y Eventos Premium</title>
+  <title>TheRing — Salones y Eventos Premium</title>
   <meta name="description" content="Bodas, quince años, eventos empresariales y celebraciones exclusivas. Recorre nuestros salones en 360° y obtén tu cotización personalizada." />
 
   <!-- Aplica el tema guardado antes de pintar para evitar parpadeo -->
@@ -16,10 +16,11 @@
   </script>
 
   <!-- Bootstrap 5 + Bootstrap Icons (CDN) -->
+    
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css"/>
   <style>
     :root{
       --ge-gold:#c9a34e;
@@ -75,7 +76,7 @@
 
     /* Hero */
     .hero{
-      position:relative;min-height:92vh;display:flex;align-items:center;color:#f6efe0;
+      position:relative;min-height:92vh;display:flex;align-items:center;color:#f6efe0;padding-top:100px;
       background:linear-gradient(rgba(18,14,10,.82),rgba(18,14,10,.7)),url('/images/hero.png') center/cover no-repeat;
     }
     .hero h1{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;line-height:1.05}
@@ -145,9 +146,17 @@
   <!-- ===== NAVBAR ===== -->
   <nav id="mainNav" class="navbar navbar-expand-lg fixed-top py-3">
     <div class="container">
-      <a class="navbar-brand brand-mark text-gold fs-4" href="#inicio">Gold<span class="text-white">Events</span></a>
+
+
+      <a class="navbar-brand brand-mark text-gold fs-4" href="#inicio">
+<img width=50 height=50 src="favicon.ico" alt="The Ring">  
+
+
+      </a>
+      
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-        <i class="bi bi-list text-gold fs-2"></i>
+      
+      <i class="bi bi-list text-gold fs-2"></i>
       </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">

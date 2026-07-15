@@ -6,7 +6,7 @@ include(resource_path('views/partials/header.blade.php'));
  <!-- ===== HERO ===== -->
   <header id="inicio" class="hero">
     <div class="container">
-      <div class="row align-items-center g-5">
+      <div class="row  align-items-center g-5">
         <div class="col-lg-7">
           <span class="badge-pill-gold reveal"><i class="bi bi-star-fill"></i> Más de 850 eventos realizados</span>
           <h1 class="mt-4 reveal">Creamos momentos que permanecerán <span class="text-gold">para siempre.</span></h1>
@@ -126,7 +126,7 @@ include(resource_path('views/partials/header.blade.php'));
 
               <!-- Nivel catering -->
               <label class="fw-semibold mb-2 d-block">Nivel de catering</label>
-              <div class="row g-2 mb-4" id="cateringLevels"></div>
+              <div class="row g-2 mb-4" id="cateringLevels"></div>  
 
               <!-- Extras -->
               <label class="fw-semibold mb-2 d-block">Servicios adicionales</label>
