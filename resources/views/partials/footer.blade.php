@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <span class="brand-mark text-gold fs-4">Gold<span class="text-white">Events</span></span>
+          <span class="brand-mark text-gold fs-4">The<span class="text-white">Ring</span></span>
           <p class="text-white-50 mt-3 small">Creamos experiencias inolvidables en los salones más exclusivos de la ciudad.</p>
         </div>
         <div class="col-6 col-lg-3">

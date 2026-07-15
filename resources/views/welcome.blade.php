@@ -46,6 +46,11 @@ include(resource_path('views/partials/header.blade.php'));
     </div>
   </section>
 
+
+@vite(['resources/js/app.js'])
+<div id="streetView"  style="width:100%;height:500px"></div>
+
+
   <!-- ===== SALONES ===== -->
   <section id="salones" class="section-alt py-5">
     <div class="container py-4">
@@ -67,7 +72,7 @@ include(resource_path('views/partials/header.blade.php'));
         <p class="text-white-50 mx-auto" style="max-width:42rem">Arrastra con el dedo o el mouse para mirar alrededor de cada salón. Cambia de espacio con los botones.</p>
       </div>
 
-      <div class="pano-tabs d-flex flex-wrap justify-content-center gap-2 mb-3 reveal" id="panoTabs"></div>
+      <div id="streetView" class="pano-tabs d-flex flex-wrap justify-content-center gap-2 mb-3 reveal" id="panoTabs"></div>
 
       <div class="pano-frame reveal d-1" id="panoFrame">
         <img class="pano-img" id="panoImg" src="/images/pano-gran.png" alt="Vista panorámica 360 del salón" draggable="false" />
