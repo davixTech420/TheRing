@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Hash;
 
@@ -74,6 +75,22 @@ class UserResource extends Resource
             ]);
     }
 
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('name'),
+                TextEntry::make('email'),
+               
+                TextEntry::make('created_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('updated_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+            ]);
+    }
     public static function getPages(): array
     {
         return [

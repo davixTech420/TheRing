@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -16,6 +17,8 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TimePicker;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\IconEntry;
 use Filament\Tables\Table;
 
 class EventResource extends Resource
@@ -78,6 +81,7 @@ class EventResource extends Resource
                 //
             ])
             ->recordActions([
+                ViewAction::make(), 
                 EditAction::make(),
                 DeleteAction::make(),
             ])
@@ -85,6 +89,31 @@ class EventResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('nameClient'),
+                TextEntry::make('email'),
+                TextEntry::make('guests')
+                    ->numeric(),
+                TextEntry::make('phone'),
+                TextEntry::make('date')
+                    ->date()
+                    ->placeholder('-'),
+                    TextEntry::make('startime')
+                    ->time(),
+                    TextEntry::make('endtime')
+                    ->time(),
+                TextEntry::make('created_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('updated_at')
+                    ->dateTime()
+                    ->placeholder('-'),
             ]);
     }
 

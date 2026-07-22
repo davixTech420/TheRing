@@ -82,11 +82,12 @@ class SalonResource extends Resource
             ->columns([
                 TextColumn::make('nombre')
                     ->searchable(),
-                ImageColumn::make('images')
-                    ->label('Imagen')
-                    ->defaultImageUrl(null)
-                    ->getStateUsing(fn($record) => $record->images[0] ?? null)
-                    ->disk('public'),
+              ImageColumn::make('images')
+    ->label('Imagen')
+    ->disk('public')
+    ->getStateUsing(function ($record) {
+        return $record->images[0] ?? null;
+    }),
                 TextColumn::make('capacidad')
                     ->numeric()
                     ->sortable(),
@@ -95,7 +96,6 @@ class SalonResource extends Resource
                     ->sortable(),
                 IconColumn::make('activo')
                     ->boolean(),
-
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
