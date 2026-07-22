@@ -6,12 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salon extends Model
 {
-    
- 
 
 
-    protected $guarded = [];
 
-    
+
+
+    protected $fillable = [
+        'nombre',
+        'images',
+        'capacidad',
+        'precio',
+        'activo',
+    ];
+
+    protected $casts = [
+        'images' => 'array',
+    ];
+
+
+
 
 }

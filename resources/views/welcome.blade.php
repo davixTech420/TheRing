@@ -2,7 +2,7 @@
 <?php
 include(resource_path('views/partials/header.blade.php'));
 ?>
-
+@vite(['resources/js/app.js'])
  <!-- ===== HERO ===== -->
   <header id="inicio" class="hero">
     <div class="container">
@@ -47,8 +47,7 @@ include(resource_path('views/partials/header.blade.php'));
   </section>
 
 
-@vite(['resources/js/app.js'])
-<div id="streetView"  style="width:100%;height:500px"></div>
+
 
 
   <!-- ===== SALONES ===== -->

@@ -18,12 +18,15 @@ return new class extends Migration
 
         $table->string('nombre');
 
+         $table->json('images');
+
         $table->integer('capacidad');
 
         $table->decimal('precio',10,2);
 
         $table->boolean('activo')->default(true);
 
+         
         $table->timestamps();
     });
 

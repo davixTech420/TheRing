@@ -11,6 +11,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Toggle;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -19,6 +20,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class SalonResource extends Resource
@@ -39,6 +41,16 @@ class SalonResource extends Resource
                 TextInput::make('precio')
                     ->required()
                     ->numeric(),
+
+                FileUpload::make('images')
+                    ->label('Galería')
+                    ->multiple()
+                    ->image()
+                    ->disk('public')
+                    ->directory('salons')
+                    ->reorderable()
+                    ->columnSpanFull(),
+
                 Toggle::make('activo')
                     ->required(),
             ]);
@@ -70,6 +82,11 @@ class SalonResource extends Resource
             ->columns([
                 TextColumn::make('nombre')
                     ->searchable(),
+                ImageColumn::make('images')
+                    ->label('Imagen')
+                    ->defaultImageUrl(null)
+                    ->getStateUsing(fn($record) => $record->images[0] ?? null)
+                    ->disk('public'),
                 TextColumn::make('capacidad')
                     ->numeric()
                     ->sortable(),
@@ -78,6 +95,7 @@ class SalonResource extends Resource
                     ->sortable(),
                 IconColumn::make('activo')
                     ->boolean(),
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

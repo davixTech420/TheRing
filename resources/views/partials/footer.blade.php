@@ -91,11 +91,11 @@
     });
 
     // ===== PANO TABS =====
-    const panoTabs = document.getElementById("panoTabs");
+   /*  const panoTabs = document.getElementById("panoTabs");
     salones.forEach((s,idx)=>{
       panoTabs.insertAdjacentHTML("beforeend",
         `<button class="btn btn-sm ${idx===0?'btn-gold':'btn-outline-gold'}" data-pano="${s.id}" onclick="openPano('${s.id}')">${s.name}</button>`);
-    });
+    }); */
 
     // ===== 360 STREET-VIEW STYLE VIEWER =====
     const frame = document.getElementById("panoFrame");
