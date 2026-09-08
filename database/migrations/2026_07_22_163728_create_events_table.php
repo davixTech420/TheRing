@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->string('nameClient');
-            $table->string('email');
-            $table->string('phone');
-            $table->integer('guests');
-            $table->date('date');
-            $table->time('startime');
-            $table->time('endtime');
-            $table->timestamps();
-        });
+        $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->string('name'); // Ej: Boda de Ana y Luis
+        $table->string('event_type'); // Boda, 15 Años, Corporativo
+        $table->dateTime('start_date');
+        $table->dateTime('end_date');
+        $table->string('status')->default('pending'); // pending, confirmed, cancelled
+        $table->json('custom_details')->nullable(); // Personalización global (temática, flores, globos)
+        $table->timestamps();
+    });
     }
 
     /**

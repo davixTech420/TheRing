@@ -12,21 +12,13 @@ return new class extends Migration
     public function up(): void
     {
        
-  Schema::create('salons', function (Blueprint $table) {
-
+ Schema::create('salons', function (Blueprint $table) {
         $table->id();
-
-        $table->string('nombre');
-
-         $table->json('images');
-
-        $table->integer('capacidad');
-
-        $table->decimal('precio',10,2);
-
-        $table->boolean('activo')->default(true);
-
-         
+        $table->string('name'); // Nombre del salón
+        $table->text('description')->nullable(); // Descripción detallada
+        $table->integer('capacity')->default(0); // Capacidad de personas
+        $table->decimal('price', 10, 2)->default(0); // Precio base de alquiler
+        $table->json('images')->nullable(); // Rutas de las fotos en galería
         $table->timestamps();
     });
 
