@@ -1,178 +1,99 @@
-
-<!DOCTYPE html>
-<html lang="es" data-bs-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TheRing — Salones y Eventos Premium</title>
-  <meta name="description" content="Bodas, quince años, eventos empresariales y celebraciones exclusivas. Recorre nuestros salones en 360° y obtén tu cotización personalizada." />
-
-  <!-- Aplica el tema guardado antes de pintar para evitar parpadeo -->
-  <script>
-    (function(){
-      var saved = localStorage.getItem("ge-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-bs-theme", theme);
-    })();
-  </script>
-
-  <!-- Bootstrap 5 + Bootstrap Icons (CDN) -->
+{{-- resources/views/partials/navbar.blade.php --}}
+<nav x-data="{ 
+        scrolled: false, 
+        mobileMenuOpen: false 
+    }" 
+    @scroll.window="scrolled = (window.pageYOffset > 50)"
+    :class="{ 
+        'bg-white/70 dark:bg-zinc-950/70 backdrop-blur-2xl border-b border-zinc-200 dark:border-zinc-800/80 shadow-lg': scrolled,
+        'bg-transparent border-b border-transparent': !scrolled 
+    }" 
+    class="fixed top-0 left-0 w-full z-[100] transition-all duration-500">
     
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+    <div class="max-w-[90rem] mx-auto px-6 md:px-12">
+        <div class="flex items-center justify-between h-24" :class="scrolled ? 'h-20' : 'h-24'" style="transition: height 0.5s ease;">
+            
+            {{-- LOGOTIPO --}}
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white flex items-center justify-center transition-transform group-hover:rotate-12">
+                        <span class="text-white dark:text-zinc-900 font-black text-xl leading-none">R</span>
+                    </div>
+                    <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
+                        THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">RING</span>
+                    </span>
+                </a>
+            </div>
 
-  <style>
-    :root{
-      --ge-gold:#c9a34e;
-      --ge-gold-soft:#e6cf94;
-      --ge-ink:#181410;
-      --ge-ink-2:#221d16;
-      --ge-cream:#faf6ee;
-      /* theme tokens (light) */
-      --ge-bg:#faf6ee;
-      --ge-surface:#ffffff;
-      --ge-surface-2:#ffffff;
-      --ge-text:#2a241c;
-      --ge-muted:#7c7364;
-      --ge-border:rgba(201,163,78,.22);
-      --ge-shadow:rgba(90,70,20,.1);
-    }
-    [data-bs-theme="dark"]{
-      --ge-bg:#100d09;
-      --ge-surface:#1b1610;
-      --ge-surface-2:#221c14;
-      --ge-text:#ece3d2;
-      --ge-muted:#a89c85;
-      --ge-border:rgba(201,163,78,.28);
-      --ge-shadow:rgba(0,0,0,.5);
-    }
-    *{scroll-behavior:smooth}
-    body{
-      font-family:'Inter',system-ui,sans-serif;
-      color:var(--ge-text);
-      background:var(--ge-bg);
-      overflow-x:hidden;
-      transition:background .4s ease,color .4s ease;
-    }
-    .text-muted{color:var(--ge-muted)!important}
-    h1,h2,h3,.font-serif{font-family:'Playfair Display',Georgia,serif}
-    .text-gold{color:var(--ge-gold)!important}
-    .bg-ink{background:var(--ge-ink)!important;color:#f4ecd9}
-    .section-title{font-size:clamp(1.8rem,4vw,2.9rem);font-weight:800;line-height:1.1}
+            {{-- MENÚ DE ESCRITORIO --}}
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="#salones" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Salones</a>
+                <a href="#servicios" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Servicios</a>
+                <a href="#experiencia" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Experiencia</a>
+                <a href="#reservas" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Reservas</a>
+            </div>
 
-    /* Buttons */
-    .btn-gold{background:var(--ge-gold);border:none;color:#1a1509;font-weight:600;box-shadow:0 8px 22px rgba(201,163,78,.35)}
-    .btn-gold:hover{background:var(--ge-gold-soft);color:#1a1509}
-    .btn-outline-gold{border:1.5px solid var(--ge-gold);color:var(--ge-gold);font-weight:600;background:transparent}
-    .btn-outline-gold:hover{background:var(--ge-gold);color:#1a1509}
+            {{-- BOTONES Y ACCIONES DE ESCRITORIO --}}
+            <div class="hidden lg:flex items-center space-x-6">
+                
+                {{-- Toggle de Tema (Claro/Oscuro) integrado en el Navbar --}}
+                <button @click="toggleTheme()" class="p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-600 dark:text-zinc-400">
+                    <svg x-show="theme === 'dark'" class="w-5 h-5 hover:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg x-cloak x-show="theme === 'light'" class="w-5 h-5 hover:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
 
-    .badge-pill-gold{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,163,78,.14);color:#9a7b2e;border:1px solid rgba(201,163,78,.35);padding:.4rem .9rem;border-radius:999px;font-size:.8rem;font-weight:600}
+                {{-- Botón de acceso al Dashboard Filament --}}
+                <a href="/admin" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative flex items-center gap-2">
+                        Panel Cliente
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                </a>
+            </div>
 
-    /* Navbar */
-    .navbar{backdrop-filter:blur(12px);background:rgba(24,20,16,.82)!important;transition:.3s}
-    .navbar .nav-link{color:#e9dfc9!important;font-weight:500}
-    .navbar .nav-link:hover{color:var(--ge-gold)!important}
-    .brand-mark{font-family:'Playfair Display',serif;font-weight:800;letter-spacing:.5px}
+            {{-- BOTÓN HAMBURGUESA (MÓVIL) --}}
+            <div class="lg:hidden flex items-center gap-4">
+                {{-- Botón tema móvil --}}
+                <button @click="toggleTheme()" class="p-2 text-zinc-600 dark:text-zinc-400">
+                    <svg x-show="theme === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg x-cloak x-show="theme === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
 
-    /* Hero */
-    .hero{
-      position:relative;min-height:92vh;display:flex;align-items:center;color:#f6efe0;padding-top:100px;
-      background:linear-gradient(rgba(18,14,10,.82),rgba(18,14,10,.7)),url('/images/hero.png') center/cover no-repeat;
-    }
-    .hero h1{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;line-height:1.05}
-    .why-card{background:rgba(30,25,19,.72);border:1px solid rgba(201,163,78,.28);border-radius:20px;color:#f2e9d6;backdrop-filter:blur(6px)}
-    .why-card .list-item i{color:var(--ge-gold)}
-    .floaty{animation:floaty 6s ease-in-out infinite}
-    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-    /* Sections */
-    .section-alt{background:var(--ge-surface);transition:background .4s ease}
-    .stat-box{background:var(--ge-surface);border:1px solid var(--ge-border);border-radius:18px;padding:1.6rem 1rem;text-align:center;height:100%;box-shadow:0 10px 30px var(--ge-shadow)}
-    .stat-num{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:800;color:var(--ge-gold)}
-
-    /* Salon cards */
-    .salon-card{border:none;border-radius:20px;overflow:hidden;background:var(--ge-surface);box-shadow:0 14px 40px var(--ge-shadow);transition:.35s}
-    .salon-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px var(--ge-shadow)}
-    .salon-card .card-body{color:var(--ge-text)}
-    .salon-card .ratio img{object-fit:cover;transition:.5s}
-    .salon-card:hover .ratio img{transform:scale(1.07)}
-    .salon-card .view360-tag{position:absolute;top:12px;left:12px;background:rgba(24,20,16,.78);color:#f4ecd9;border:1px solid rgba(201,163,78,.5);padding:.3rem .7rem;border-radius:999px;font-size:.72rem;font-weight:600;z-index:2}
-
-    /* Services */
-    .service-box{padding:2rem 1rem;border-radius:18px;transition:.3s;height:100%}
-    .service-box:hover{background:var(--ge-surface-2);box-shadow:0 14px 40px var(--ge-shadow);transform:translateY(-6px)}
-    .service-box i{color:var(--ge-gold)}
-
-    /* 360 Viewer */
-    .pano-frame{position:relative;border-radius:20px;overflow:hidden;height:min(70vh,520px);cursor:grab;background:#111;box-shadow:0 20px 60px rgba(0,0,0,.35);user-select:none}
-    .pano-frame.dragging{cursor:grabbing}
-    .pano-img{position:absolute;top:0;left:0;height:100%;width:260%;max-width:none;object-fit:cover;will-change:transform;pointer-events:none}
-    @media(max-width:768px){.pano-img{width:420%}}
-    .pano-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(20,16,12,.72);color:#f4ecd9;padding:.5rem 1rem;border-radius:999px;font-size:.82rem;display:flex;gap:.5rem;align-items:center;z-index:3;pointer-events:none}
-    .pano-tabs .btn{border-radius:999px}
-    .pano-hotspot{position:absolute;width:38px;height:38px;border-radius:50%;background:rgba(201,163,78,.9);color:#1a1509;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;z-index:4;animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,163,78,.6)}70%{box-shadow:0 0 0 14px rgba(201,163,78,0)}100%{box-shadow:0 0 0 0 rgba(201,163,78,0)}}
-
-    /* Form / quote */
-    .quote-wrap{background:var(--ge-surface);border-radius:24px;box-shadow:0 24px 70px var(--ge-shadow);overflow:hidden}
-    .quote-side{background:linear-gradient(160deg,var(--ge-ink),var(--ge-ink-2));color:#f2e9d6}
-    .form-control,.form-select{border-radius:12px;padding:.7rem .9rem}
-    .form-control:focus,.form-select:focus{border-color:var(--ge-gold);box-shadow:0 0 0 .2rem rgba(201,163,78,.25)}
-    .opt-card{border:1.5px solid var(--ge-border);border-radius:14px;padding:.85rem;cursor:pointer;transition:.2s;height:100%;color:var(--ge-text)}
-    .opt-card:hover{border-color:var(--ge-gold)}
-    .opt-card.active{border-color:var(--ge-gold);background:rgba(201,163,78,.1)}
-    .opt-card i{font-size:1.4rem;color:var(--ge-gold)}
-    .price-tag{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);font-weight:800}
-    input[type=range]{accent-color:var(--ge-gold)}
-
-    /* WhatsApp floating */
-    .wa-float{position:fixed;right:20px;bottom:20px;z-index:1080;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 8px 24px rgba(37,211,102,.5);text-decoration:none;transition:.3s;animation:waPulse 2.5s infinite}
-    .wa-float:hover{transform:scale(1.1);color:#fff}
-    .wa-tip{position:fixed;right:90px;bottom:32px;z-index:1080;background:var(--ge-surface);padding:.55rem .9rem;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2);font-size:.85rem;font-weight:600;color:var(--ge-text)}
-    @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-    @media(max-width:576px){.wa-tip{display:none}}
-
-    /* Reveal on scroll */
-    .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-    .reveal.on{opacity:1;transform:none}
-    .d-1{transition-delay:.12s}.d-2{transition-delay:.24s}.d-3{transition-delay:.36s}
-
-    footer a{color:#cbb87f;text-decoration:none}
-    footer a:hover{color:var(--ge-gold)}
-  </style>
-</head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav">
-
-  <!-- ===== NAVBAR ===== -->
-  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top py-3">
-    <div class="container">
-
-
-      <a class="navbar-brand brand-mark text-gold fs-4" href="#inicio">
-<img width=50 height=50 src="favicon.ico" alt="The Ring">  
-
-
-      </a>
-      
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      
-      <i class="bi bi-list text-gold fs-2"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#salones">Salones</a></li>
-          <li class="nav-item"><a class="nav-link" href="#tour">Tour 360°</a></li>
-          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#cotizar">Cotizar</a></li>
-          <li class="nav-item ms-lg-2"><a class="btn btn-gold px-3" href="#cotizar"><i class="bi bi-calendar-check me-1"></i>Reservar</a></li>
-          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-            <button id="themeToggle" class="btn btn-outline-gold rounded-circle d-inline-flex align-items-center justify-content-center" style="width:42px;height:42px" type="button" aria-label="Cambiar tema claro u oscuro">
-              <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-zinc-900 dark:text-white focus:outline-none z-[110] relative">
+                    {{-- Icono Menú / Cerrar Animado --}}
+                    <div class="w-6 h-5 flex flex-col justify-between relative">
+                        <span class="w-full h-0.5 bg-current transition-all duration-300" :class="mobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''"></span>
+                        <span class="w-full h-0.5 bg-current transition-all duration-300" :class="mobileMenuOpen ? 'opacity-0' : ''"></span>
+                        <span class="w-full h-0.5 bg-current transition-all duration-300" :class="mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
     </div>
-  </nav>
+
+    {{-- MENÚ MÓVIL DESPLEGABLE (FULL SCREEN GLASS) --}}
+    <div x-cloak 
+         x-show="mobileMenuOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-10"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-10"
+         class="lg:hidden fixed inset-0 z-[90] bg-white/90 dark:bg-zinc-950/90 backdrop-blur-3xl h-screen flex flex-col justify-center px-6">
+        
+        <div class="flex flex-col space-y-8 items-center text-center">
+            <a href="#salones" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Salones</a>
+            <a href="#servicios" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Servicios</a>
+            <a href="#experiencia" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Experiencia</a>
+            <a href="#reservas" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Reservas</a>
+            
+            <div class="pt-8 w-full border-t border-zinc-200 dark:border-zinc-800">
+                <a href="/admin" class="block w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold uppercase tracking-widest rounded-2xl">
+                    Panel Cliente
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

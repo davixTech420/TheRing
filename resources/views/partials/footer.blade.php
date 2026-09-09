@@ -1,252 +1,80 @@
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-ink pt-5 pb-4">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <span class="brand-mark text-gold fs-4">The<span class="text-white">Ring</span></span>
-          <p class="text-white-50 mt-3 small">Creamos experiencias inolvidables en los salones más exclusivos de la ciudad.</p>
-        </div>
-        <div class="col-6 col-lg-3">
-          <h6 class="text-white">Enlaces</h6>
-          <ul class="list-unstyled small mt-3">
-            <li class="mb-2"><a href="#salones">Salones</a></li>
-            <li class="mb-2"><a href="#tour">Tour 360°</a></li>
-            <li class="mb-2"><a href="#servicios">Servicios</a></li>
-            <li class="mb-2"><a href="#cotizar">Cotizar</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-5">
-          <h6 class="text-white">Contacto</h6>
-          <ul class="list-unstyled small mt-3 text-white-50">
-            <li class="mb-2"><i class="bi bi-geo-alt text-gold me-2"></i>Cl. 40 Sur #411, Bogota</li>
-            <li class="mb-2"><i class="bi bi-telephone text-gold me-2"></i>+57 301 5717859</li>
-            <li class="mb-2"><i class="bi bi-envelope text-gold me-2"></i>hola@thering.com</li>
-          </ul>
-        </div>
-      </div>
-      <hr class="border-secondary mt-4" />
-      <p class="text-center text-white-50 small m-0">© <span id="year"></span> The Ring. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <!-- ===== WHATSAPP FLOTANTE ===== -->
-  <div class="wa-tip">¿Dudas? ¡Escríbenos!</div>  
-  <a href="https://wa.me/573015717859?text=Hola%TheRing,%20quiero%20información%20sobre%20un%20evento" target="_blank" class="wa-float" aria-label="Escríbenos por WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
-  <script>
-
-    // ===== DATA =====
-    const WA_NUMBER = "525551234567";
-    const salones = [
-      { id:"gran",   name:"Gran Salón Imperial", cap:500, base:45000, pano:"/images/pano-gran.png",
-        desc:"Elegancia clásica con candelabros de cristal, ideal para bodas de gran formato." },
-      { id:"jardin", name:"Terraza Jardín",      cap:250, base:32000, pano:"/images/pano-jardin.png",
-        desc:"Espacio al aire libre con luces cálidas, perfecto para recepciones al atardecer." },
-      { id:"intimo", name:"Salón Íntimo",        cap:80,  base:18000, pano:"/images/pano-intimo.png",
-        desc:"Ambiente acogedor y sofisticado para celebraciones privadas y exclusivas." },
-    ];
-    const eventTypes = [
-      {v:"Boda", i:"bi-heart"}, {v:"Quince años", i:"bi-gem"},
-      {v:"Empresarial", i:"bi-briefcase"}, {v:"Cumpleaños", i:"bi-balloon"},
-    ];
-    const cateringLevels = [
-      {v:"Básico",   i:"bi-cup", price:350, desc:"Bocadillos + bebida"},
-      {v:"Premium",  i:"bi-cup-hot", price:650, desc:"Menú 3 tiempos"},
-      {v:"Gourmet",  i:"bi-award", price:980, desc:"Chef + maridaje"},
-    ];
-    const extras = [
-      {v:"Decoración", i:"bi-flower1", price:8000},
-      {v:"Foto y Video", i:"bi-camera-reels", price:12000},
-      {v:"DJ", i:"bi-disc", price:6000},
-      {v:"Orquesta", i:"bi-music-note-beamed", price:18000},
-      {v:"Barra libre", i:"bi-cup-straw", price:15000},
-      {v:"Transporte", i:"bi-car-front", price:5000},
-    ];
-
-    // ===== RENDER SALONES =====
-    const salonGrid = document.getElementById("salonGrid");
-    salones.forEach((s,idx)=>{
-      salonGrid.insertAdjacentHTML("beforeend", `
-        <div class="col-md-6 col-lg-4 reveal ${idx===1?'d-1':idx===2?'d-2':''}">
-          <div class="card salon-card h-100 position-relative">
-            <span class="view360-tag"><i class="bi bi-badge-vr me-1"></i>360°</span>
-            <div class="ratio ratio-4x3"><img src="${s.pano}" alt="${s.name}" /></div>
-            <div class="card-body p-4">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="h5 m-0">${s.name}</h3>
-                <span class="badge-pill-gold small">${s.cap} pers.</span>
-              </div>
-              <p class="text-muted small mb-3">${s.desc}</p>
-              <button class="btn btn-outline-gold btn-sm w-100" onclick="openPano('${s.id}')">
-                <i class="bi bi-badge-vr me-1"></i> Ver en 360°
-              </button>
+{{-- resources/views/partials/footer.blade.php --}}
+<footer class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-900 pt-20 pb-10 transition-colors duration-500 relative z-10 footer-section">
+    <div class="max-w-[90rem] mx-auto px-6 md:px-12">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16 footer-content">
+            
+            {{-- COLUMNA 1: Branding y Descripción --}}
+            <div class="lg:col-span-4 space-y-6">
+                <a href="/" class="flex items-center gap-2 group inline-flex">
+                    <div class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white flex items-center justify-center transition-transform group-hover:rotate-12">
+                        <span class="text-white dark:text-zinc-900 font-black text-xl leading-none">R</span>
+                    </div>
+                    <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
+                        THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">RING</span>
+                    </span>
+                </a>
+                <p class="text-zinc-500 dark:text-zinc-400 font-light max-w-sm transition-colors">
+                    El motor definitivo para la creación, gestión y ejecución de eventos de alto calibre. Diseño absoluto, control total.
+                </p>
             </div>
-          </div>
-        </div>`);
-    });
 
-    // ===== PANO TABS =====
-   /*  const panoTabs = document.getElementById("panoTabs");
-    salones.forEach((s,idx)=>{
-      panoTabs.insertAdjacentHTML("beforeend",
-        `<button class="btn btn-sm ${idx===0?'btn-gold':'btn-outline-gold'}" data-pano="${s.id}" onclick="openPano('${s.id}')">${s.name}</button>`);
-    }); */
+            {{-- COLUMNA 2: Enlaces Rápidos --}}
+            <div class="lg:col-span-2">
+                <h4 class="text-zinc-900 dark:text-white font-bold uppercase tracking-widest text-sm mb-6 transition-colors">Explorar</h4>
+                <ul class="space-y-4">
+                    <li><a href="#salones" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Salones Inteligentes</a></li>
+                    <li><a href="#staff" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Staff y Operaciones</a></li>
+                    <li><a href="#inventario" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Inventario Técnico</a></li>
+                    <li><a href="#reservas" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Motor de Reservas</a></li>
+                </ul>
+            </div>
 
-    // ===== 360 STREET-VIEW STYLE VIEWER =====
-    const frame = document.getElementById("panoFrame");
-    const img = document.getElementById("panoImg");
-    const panoTitle = document.getElementById("panoTitle");
-    let offset=0, dragging=false, startX=0, startOffset=0, maxOffset=0, auto=true;
+            {{-- COLUMNA 3: Soporte --}}
+            <div class="lg:col-span-2">
+                <h4 class="text-zinc-900 dark:text-white font-bold uppercase tracking-widest text-sm mb-6 transition-colors">Soporte</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Centro de Ayuda</a></li>
+                    <li><a href="#" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Documentación API</a></li>
+                    <li><a href="#" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Términos de Servicio</a></li>
+                    <li><a href="#" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Privacidad</a></li>
+                </ul>
+            </div>
 
-    function fitPano(){
-      // image height = frame height (set via CSS), width scales; compute max horizontal offset
-      maxOffset = Math.max(0, img.offsetWidth - frame.offsetWidth);
-      offset = Math.min(Math.max(offset,-maxOffset),0);
-      img.style.transform = `translateX(${offset}px)`;
-    }
-    img.addEventListener("load", ()=>{ offset = -maxOffset/2; fitPano(); });
-    window.addEventListener("resize", fitPano);
+            {{-- COLUMNA 4: Newsletter Interactivo --}}
+            <div class="lg:col-span-4">
+                <h4 class="text-zinc-900 dark:text-white font-bold uppercase tracking-widest text-sm mb-6 transition-colors">Acceso Exclusivo</h4>
+                <p class="text-zinc-500 dark:text-zinc-400 font-light text-sm mb-4 transition-colors">
+                    Suscríbete para recibir actualizaciones sobre nuevas capacidades del sistema y tendencias de producción.
+                </p>
+                <form @submit.prevent="alert('¡Gracias por suscribirte!')" class="relative flex items-center mt-2 group">
+                    <input type="email" placeholder="tu@correo.com" required class="w-full bg-zinc-200/50 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-full px-6 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors text-sm placeholder-zinc-500 dark:placeholder-zinc-600">
+                    <button type="submit" class="absolute right-1.5 p-2 bg-amber-500 text-zinc-950 rounded-full hover:scale-105 transition-transform shadow-md group-focus-within:bg-amber-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
 
-    function openPano(id){
-      const s = salones.find(x=>x.id===id);
-      img.src = s.pano;
-      panoTitle.textContent = `${s.name} · capacidad ${s.cap} personas`;
-      document.querySelectorAll("#panoTabs button").forEach(b=>{
-        b.className = "btn btn-sm " + (b.dataset.pano===id ? "btn-gold":"btn-outline-gold");
-      });
-      document.getElementById("tour").scrollIntoView({behavior:"smooth"});
-    }
-
-    function pointerDown(x){ dragging=true; auto=false; startX=x; startOffset=offset; frame.classList.add("dragging"); }
-    function pointerMove(x){ if(!dragging)return; offset = startOffset + (x-startX);
-      offset = Math.min(Math.max(offset,-maxOffset),0); img.style.transform=`translateX(${offset}px)`; }
-    function pointerUp(){ dragging=false; frame.classList.remove("dragging"); }
-
-    frame.addEventListener("mousedown", e=>pointerDown(e.clientX));
-    window.addEventListener("mousemove", e=>pointerMove(e.clientX));
-    window.addEventListener("mouseup", pointerUp);
-    frame.addEventListener("touchstart", e=>pointerDown(e.touches[0].clientX), {passive:true});
-    frame.addEventListener("touchmove", e=>pointerMove(e.touches[0].clientX), {passive:true});
-    frame.addEventListener("touchend", pointerUp);
-
-    // gentle auto-pan until user interacts
-    let dir=1;
-    setInterval(()=>{
-      if(auto && maxOffset>0 && !dragging){
-        offset += dir*0.4;
-        if(offset<=-maxOffset || offset>=0) dir*=-1;
-        img.style.transform=`translateX(${offset}px)`;
-      }
-    },30);
-
-    // ===== QUOTE CONFIGURATOR =====
-    let sel = { type:"Boda", salon:"gran", guests:150, catering:"Premium", extras:new Set(["Decoración","Foto y Video"]) };
-
-    const etWrap=document.getElementById("eventTypes");
-    eventTypes.forEach(t=>etWrap.insertAdjacentHTML("beforeend",
-      `<div class="col-6 col-md-3"><div class="opt-card text-center ${t.v===sel.type?'active':''}" data-type="${t.v}" onclick="pickType('${t.v}')">
-        <i class="bi ${t.i}"></i><div class="small fw-semibold mt-1">${t.v}</div></div></div>`));
-
-    const salonSel=document.getElementById("fSalon");
-    salones.forEach(s=>salonSel.insertAdjacentHTML("beforeend",`<option value="${s.id}">${s.name} (hasta ${s.cap})</option>`));
-
-    const clWrap=document.getElementById("cateringLevels");
-    cateringLevels.forEach(c=>clWrap.insertAdjacentHTML("beforeend",
-      `<div class="col-md-4"><div class="opt-card text-center ${c.v===sel.catering?'active':''}" data-cat="${c.v}" onclick="pickCatering('${c.v}')">
-        <i class="bi ${c.i}"></i><div class="small fw-semibold mt-1">${c.v}</div><div class="text-muted" style="font-size:.72rem">$${c.price}/pers · ${c.desc}</div></div></div>`));
-
-    const exWrap=document.getElementById("extrasGrid");
-    extras.forEach(x=>exWrap.insertAdjacentHTML("beforeend",
-      `<div class="col-6 col-md-4"><div class="opt-card ${sel.extras.has(x.v)?'active':''}" data-extra="${x.v}" onclick="toggleExtra('${x.v}')">
-        <div class="d-flex align-items-center gap-2"><i class="bi ${x.i}"></i><span class="small fw-semibold">${x.v}</span></div>
-        <div class="text-muted" style="font-size:.72rem">+$${x.price.toLocaleString()}</div></div></div>`));
-
-    function pickType(v){ sel.type=v; document.querySelectorAll('[data-type]').forEach(e=>e.classList.toggle('active',e.dataset.type===v)); calc(); }
-    function pickCatering(v){ sel.catering=v; document.querySelectorAll('[data-cat]').forEach(e=>e.classList.toggle('active',e.dataset.cat===v)); calc(); }
-    function toggleExtra(v){ sel.extras.has(v)?sel.extras.delete(v):sel.extras.add(v);
-      document.querySelector(`[data-extra="${v}"]`).classList.toggle('active'); calc(); }
-
-    const guests=document.getElementById("fGuests"), guestsLabel=document.getElementById("guestsLabel");
-    guests.addEventListener("input",()=>{ sel.guests=+guests.value; guestsLabel.textContent=guests.value; calc(); });
-    salonSel.addEventListener("change",()=>{ sel.salon=salonSel.value; calc(); });
-    document.getElementById("fTime").addEventListener("change", calc);
-
-    function calc(){
-      const s = salones.find(x=>x.id===sel.salon);
-      const cat = cateringLevels.find(c=>c.v===sel.catering);
-      let total = s.base + (cat.price*sel.guests);
-      let extrasTotal=0; sel.extras.forEach(v=>extrasTotal += extras.find(x=>x.v===v).price);
-      total += extrasTotal;
-      if(document.getElementById("fTime").value.includes("Nocturno")) total*=1.10;
-
-      document.getElementById("priceTag").textContent = "$"+Math.round(total).toLocaleString();
-      document.getElementById("perGuest").textContent = "≈ $"+Math.round(total/sel.guests).toLocaleString()+" por invitado";
-
-      document.getElementById("summaryList").innerHTML = `
-        <li class="d-flex justify-content-between py-1 border-bottom border-secondary"><span>Evento</span><b>${sel.type}</b></li>
-        <li class="d-flex justify-content-between py-1 border-bottom border-secondary"><span>Salón</span><b>${s.name}</b></li>
-        <li class="d-flex justify-content-between py-1 border-bottom border-secondary"><span>Invitados</span><b>${sel.guests}</b></li>
-        <li class="d-flex justify-content-between py-1 border-bottom border-secondary"><span>Catering ${sel.catering}</span><b>$${(cat.price*sel.guests).toLocaleString()}</b></li>
-        <li class="d-flex justify-content-between py-1"><span>Extras (${sel.extras.size})</span><b>$${extrasTotal.toLocaleString()}</b></li>`;
-
-      // update whatsapp quote link
-      const msg = `Hola GoldEvents! Quiero cotizar un evento:%0A- Tipo: ${sel.type}%0A- Salón: ${s.name}%0A- Invitados: ${sel.guests}%0A- Catering: ${sel.catering}%0A- Extras: ${[...sel.extras].join(", ")||"ninguno"}%0A- Estimado: $${Math.round(total).toLocaleString()}`;
-      document.getElementById("waQuote").href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-    }
-    calc();
-
-    function handleSubmit(e){
-      e.preventDefault();
-      alert("¡Gracias! Recibimos tu solicitud. Un asesor te contactará muy pronto.");
-      return false;
-    }
-
-    // ===== COUNTERS =====
-    function runCounter(el){
-      const target=+el.dataset.count, dec=+el.dataset.decimals||0, suf=el.dataset.suffix||"";
-      let start=0; const dur=1400, t0=performance.now();
-      (function step(t){ const p=Math.min((t-t0)/dur,1);
-        el.textContent=(target*p).toFixed(dec)+suf;
-        if(p<1) requestAnimationFrame(step); else el.textContent=target.toFixed(dec)+suf;
-      })(t0);
-    }
-
-    // ===== REVEAL + counters via IntersectionObserver =====
-    const io=new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("on");
-        en.target.querySelectorAll?.("[data-count]").forEach(runCounter);
-        if(en.target.dataset.count) runCounter(en.target);
-        io.unobserve(en.target); } });
-    },{threshold:.15});
-    document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-    document.querySelectorAll("[data-count]").forEach(el=>io.observe(el));
-
-    // navbar shadow on scroll
-    window.addEventListener("scroll",()=>{ document.getElementById("mainNav").style.boxShadow = window.scrollY>40 ? "0 6px 24px rgba(0,0,0,.25)":"none"; });
-
-    document.getElementById("year").textContent=new Date().getFullYear();
-    fitPano();
-
-    // ===== THEME TOGGLE (claro / oscuro) =====
-    const themeToggle=document.getElementById("themeToggle");
-    const themeIcon=document.getElementById("themeIcon");
-    function syncThemeIcon(){
-      const isDark=document.documentElement.getAttribute("data-bs-theme")==="dark";
-      themeIcon.className = isDark ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
-      themeToggle.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
-    }
-    themeToggle.addEventListener("click",()=>{
-      const next=document.documentElement.getAttribute("data-bs-theme")==="dark" ? "light":"dark";
-      document.documentElement.setAttribute("data-bs-theme",next);
-      localStorage.setItem("ge-theme",next);
-      syncThemeIcon();
-    });
-    syncThemeIcon();
-  </script>
-</body>
-</html>
+        {{-- BOTTOM FOOTER: Copyright y Redes Sociales --}}
+        <div class="pt-8 border-t border-zinc-200 dark:border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6 transition-colors">
+            
+            {{-- Año Automático con Alpine.js --}}
+            <p class="text-zinc-500 dark:text-zinc-500 text-sm font-light">
+                &copy; <span x-text="new Date().getFullYear()"></span> The Ring Ecosystem. Todos los derechos reservados.
+            </p>
+            
+            <div class="flex items-center space-x-6">
+                {{-- Iconos SVG de Redes Sociales --}}
+                <a href="#" class="text-zinc-400 hover:text-amber-500 transition-colors transform hover:scale-110">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="text-zinc-400 hover:text-amber-500 transition-colors transform hover:scale-110">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
