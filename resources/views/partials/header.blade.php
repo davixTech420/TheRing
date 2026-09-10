@@ -16,11 +16,11 @@
             {{-- LOGOTIPO --}}
             <div class="flex-shrink-0">
                 <a href="/" class="flex items-center gap-2 group">
-                    <div class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white flex items-center justify-center transition-transform group-hover:rotate-12">
-                        <span class="text-white dark:text-zinc-900 font-black text-xl leading-none">R</span>
+                    <div class="w-8 h-8 rounded-lg   flex items-center justify-center transition-transform group-hover:rotate-12">
+                        <img width=50 height=50 src="favicon.ico" alt="The Ring">   
                     </div>
                     <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
-                        THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">RING</span>
+                        Eventos <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600"> The Ring</span>
                     </span>
                 </a>
             </div>

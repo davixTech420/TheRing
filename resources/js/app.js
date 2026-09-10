@@ -106,3 +106,55 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 50, opacity: 0, stagger: 0.1
     });
 });
+
+
+
+
+
+
+
+  /*
+
+// --- MOTOR DE RESERVAS (ANIMACIÓN 3D AVANZADA CON GSAP SCROLL) ---
+    
+    // 1. Efecto en Cascada para los títulos
+    gsap.from(".builder-badge-gsap", {
+        scrollTrigger: { trigger: ".builder-section", start: "top 85%", end: "top 60%", scrub: 1 },
+        y: -30, opacity: 0
+    });
+    
+    gsap.from(".builder-title-gsap", {
+        scrollTrigger: { trigger: ".builder-section", start: "top 80%", end: "top 50%", scrub: 1.5 },
+        y: 100, opacity: 0, rotationX: -45, transformOrigin: "bottom center"
+    });
+
+    gsap.from(".builder-subtitle-gsap", {
+        scrollTrigger: { trigger: ".builder-section", start: "top 75%", end: "top 45%", scrub: 1 },
+        y: 30, opacity: 0
+    });
+
+   // 2. EL GRAN REVEAL 3D DEL CONFIGURADOR
+    // Inicializamos la tarjeta inclinada hacia atrás y pequeña
+    gsap.set(".builder-3d-card", { 
+        rotationX: 30, // Inclinado hacia atrás
+        scale: 0.85,   // Más pequeño
+        y: 150,        // Más abajo
+        opacity: 0,
+        boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+    });
+
+    // Al hacer scroll, se levanta, recupera su tamaño original y se ilumina
+    gsap.to(".builder-3d-card", { 
+        rotationX: 0, 
+        scale: 1, 
+        y: 0, 
+        opacity: 1, 
+        boxShadow: "0px 40px 100px -20px rgba(0,0,0,0.5)", // Sombra masiva al "Aterrizar"
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".builder-section",
+            start: "top 70%", // Comienza cuando la sección asoma por abajo
+            end: "top 15%",   // Termina cuando el título casi llega arriba
+            scrub: 1.5        // Scrub = 1.5s de suavidad al seguir la rueda del ratón
+        }
+    }); */
