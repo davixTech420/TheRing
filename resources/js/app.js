@@ -3,6 +3,12 @@ import Alpine from 'alpinejs';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+
+
+
+
+
+//WELCOME
 // 1. Inicializar Alpine.js
 window.Alpine = Alpine;
 Alpine.start();
@@ -113,48 +119,262 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /*
 
-// --- MOTOR DE RESERVAS (ANIMACIÓN 3D AVANZADA CON GSAP SCROLL) ---
+
+
+
+
+
+
+//SALONES
+document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Efecto en Cascada para los títulos
-    gsap.from(".builder-badge-gsap", {
-        scrollTrigger: { trigger: ".builder-section", start: "top 85%", end: "top 60%", scrub: 1 },
-        y: -30, opacity: 0
-    });
+    // --- 1. CURSOR MAGNÉTICO PERSONALIZADO ---
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor-dot');
     
-    gsap.from(".builder-title-gsap", {
-        scrollTrigger: { trigger: ".builder-section", start: "top 80%", end: "top 50%", scrub: 1.5 },
-        y: 100, opacity: 0, rotationX: -45, transformOrigin: "bottom center"
-    });
+    if (cursor && cursorDot) {
+        // quickTo es súper óptimo para seguir el mouse sin lag
+        const xMoveCursor = gsap.quickTo(cursor, "x", {duration: 0.5, ease: "power3"});
+        const yMoveCursor = gsap.quickTo(cursor, "y", {duration: 0.5, ease: "power3"});
+        const xMoveDot = gsap.quickTo(cursorDot, "x", {duration: 0.1, ease: "power3"});
+        const yMoveDot = gsap.quickTo(cursorDot, "y", {duration: 0.1, ease: "power3"});
 
-    gsap.from(".builder-subtitle-gsap", {
-        scrollTrigger: { trigger: ".builder-section", start: "top 75%", end: "top 45%", scrub: 1 },
-        y: 30, opacity: 0
-    });
+        window.addEventListener("mousemove", (e) => {
+            xMoveCursor(e.clientX - 12); // -12 para centrar el círculo de 24px
+            yMoveCursor(e.clientY - 12);
+            xMoveDot(e.clientX - 4);
+            yMoveDot(e.clientY - 4);
+        });
 
-   // 2. EL GRAN REVEAL 3D DEL CONFIGURADOR
-    // Inicializamos la tarjeta inclinada hacia atrás y pequeña
-    gsap.set(".builder-3d-card", { 
-        rotationX: 30, // Inclinado hacia atrás
-        scale: 0.85,   // Más pequeño
-        y: 150,        // Más abajo
-        opacity: 0,
-        boxShadow: "0px 0px 0px rgba(0,0,0,0)"
-    });
+        // Efecto Hover en imágenes
+        const hoverTargets = document.querySelectorAll('.cursor-hover-target');
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                gsap.to(cursor, {scale: 3, backgroundColor: "rgba(245, 158, 11, 0.2)", duration: 0.3});
+            });
+            target.addEventListener('mouseleave', () => {
+                gsap.to(cursor, {scale: 1, backgroundColor: "transparent", duration: 0.3});
+            });
+        });
+    }
 
-    // Al hacer scroll, se levanta, recupera su tamaño original y se ilumina
-    gsap.to(".builder-3d-card", { 
-        rotationX: 0, 
-        scale: 1, 
-        y: 0, 
-        opacity: 1, 
-        boxShadow: "0px 40px 100px -20px rgba(0,0,0,0.5)", // Sombra masiva al "Aterrizar"
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".builder-section",
-            start: "top 70%", // Comienza cuando la sección asoma por abajo
-            end: "top 15%",   // Termina cuando el título casi llega arriba
-            scrub: 1.5        // Scrub = 1.5s de suavidad al seguir la rueda del ratón
+    // --- 2. LÓGICA DE SCROLL HORIZONTAL AVANZADA ---
+    const horizontalWrapper = document.querySelector(".venues-horizontal-wrapper");
+    
+    if (horizontalWrapper) {
+        
+        // Animación Intro Enmascarada (Las letras suben desde lo oculto)
+        const tlIntro = gsap.timeline();
+        tlIntro.from(".intro-badge", { y: "100%", duration: 0.8, ease: "power3.out", delay: 0.2 })
+               .from(".intro-title-line", { y: "100%", duration: 1, stagger: 0.1, ease: "power4.out" }, "-=0.5")
+               .from(".intro-scroll-indicator", { opacity: 0, y: 20, duration: 1 }, "-=0.2");
+
+        const scrollContainer = document.querySelector(".venues-horizontal-container");
+        const slides = gsap.utils.toArray(".venue-slide");
+        const progressBar = document.querySelector(".scroll-progress-bar");
+
+        function getScrollAmount() {
+            return -(scrollContainer.scrollWidth - window.innerWidth);
         }
-    }); */
+
+        const horizontalTween = gsap.to(scrollContainer, {
+            x: getScrollAmount,
+            ease: "none"
+        });
+
+        // Trigger Principal
+        ScrollTrigger.create({
+            trigger: horizontalWrapper,
+            start: "top top",
+            end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`,
+            pin: true,
+            animation: horizontalTween,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            // Actualiza la barra de progreso global
+            onUpdate: (self) => {
+                if (progressBar) {
+                    gsap.to(progressBar, { width: `${self.progress * 100}%`, duration: 0.1, ease: "none" });
+                }
+            }
+        });
+
+        // --- 3. ANIMACIONES INDIVIDUALES POR SALÓN ---
+        slides.forEach((slide) => {
+            
+            // Efecto de expansión de la imagen principal
+            const mainMask = slide.querySelector(".venue-main-img-mask");
+            const bgImage = slide.querySelector(".venue-parallax-bg");
+            
+            if(mainMask) {
+                gsap.fromTo(mainMask, 
+                    { clipPath: "polygon(20% 0, 80% 0, 80% 100%, 20% 100%)" },
+                    {
+                        clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: slide,
+                            containerAnimation: horizontalTween,
+                            start: "left 90%",
+                            end: "center center",
+                            scrub: true
+                        }
+                    }
+                );
+            }
+
+            if(bgImage) {
+                gsap.to(bgImage, {
+                    xPercent: 20, // Movimiento parallax fuerte
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: slide,
+                        containerAnimation: horizontalTween,
+                        start: "left right",
+                        end: "right left",
+                        scrub: true
+                    }
+                });
+            }
+
+            // Fotos flotantes con direcciones opuestas
+            if(slide.querySelector(".venue-float-1")) {
+                gsap.from(slide.querySelector(".venue-float-1"), {
+                    y: 150, x: -80, rotation: -10, opacity: 0,
+                    scrollTrigger: {
+                        trigger: slide, containerAnimation: horizontalTween,
+                        start: "left 80%", end: "center center", scrub: 1
+                    }
+                });
+            }
+
+            if(slide.querySelector(".venue-float-2")) {
+                gsap.from(slide.querySelector(".venue-float-2"), {
+                    y: -150, x: 80, rotation: 10, opacity: 0,
+                    scrollTrigger: {
+                        trigger: slide, containerAnimation: horizontalTween,
+                        start: "left 70%", end: "center center", scrub: 1.5
+                    }
+                });
+            }
+
+            // Animación de Texto (Emergiendo línea por línea)
+            const textLines = slide.querySelectorAll(".text-line");
+            if(textLines.length > 0) {
+                gsap.from(textLines, {
+                    y: "100%", // Sube desde afuera del overflow-hidden
+                    duration: 1,
+                    stagger: 0.1,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: slide,
+                        containerAnimation: horizontalTween,
+                        start: "left 60%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            }
+        });
+
+        // --- 4. BOTONES MAGNÉTICOS ---
+        const magnetics = document.querySelectorAll('.magnetic-wrapper');
+        magnetics.forEach(wrapper => {
+            const btn = wrapper.querySelector('.magnetic-button');
+            if(btn) {
+                wrapper.addEventListener('mousemove', (e) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3; // Factor magnético
+                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                    gsap.to(btn, { x: x, y: y, duration: 1, ease: "power3.out" });
+                });
+                wrapper.addEventListener('mouseleave', () => {
+                    gsap.to(btn, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)" });
+                });
+            }
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//SERVICIOS
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const track = document.querySelector('.customizer-track');
+    
+    if (track) {
+        // TIMELINE MAESTRO: Atado 100% a la rueda del ratón
+        const tlMaster = gsap.timeline({
+            scrollTrigger: {
+                trigger: track,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.5, // Suavizado casi instantáneo para máxima sensación de control
+                pin: ".customizer-visualizer"
+            }
+        });
+
+        // 1. Escaneo Estructural (0% al 33% del scroll)
+        // La línea láser barre la pantalla mientras recorta la segunda imagen
+        tlMaster.to(".scanner-line", { left: "100%", ease: "none", duration: 3 }, 0)
+                .to(".layer-layout", { clipPath: "inset(0 0% 0 0)", ease: "none", duration: 3 }, 0)
+                .to(".layer-arch", { scale: 0.9, z: -200, filter: "blur(4px)", duration: 3 }, 0);
+
+        // Ocultar láser al terminar de escanear
+        tlMaster.to(".scanner-line", { opacity: 0, duration: 0.1 }, 3);
+
+        // 2. Expansión Lumínica (33% al 66% del scroll)
+        // El círculo de iluminación crece desde el centro hacia los bordes
+        tlMaster.to(".layer-lighting", { clipPath: "circle(150% at 50% 50%)", ease: "power2.inOut", duration: 3 }, 3)
+                .to(".layer-layout", { scale: 1.05, duration: 3 }, 3);
+
+        // 3. Impacto de Rigging y FX (66% al 100% del scroll)
+        // La última capa entra con un golpe de inercia y rotación 3D
+        tlMaster.fromTo(".layer-fx", 
+                { opacity: 0, scale: 1.2, rotationZ: 5 },
+                { opacity: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 3 }, 6
+        );
+
+        // 4. Parallax Inverso para las Tarjetas UI
+        const cards = gsap.utils.toArray('.step-card');
+        cards.forEach((card, i) => {
+            gsap.fromTo(card, 
+                { y: 150, opacity: 0, rotationX: -15 },
+                {
+                    y: 0, opacity: 1, rotationX: 0,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 80%",
+                        end: "top 40%",
+                        scrub: 1
+                    }
+                }
+            );
+        });
+    }
+});
