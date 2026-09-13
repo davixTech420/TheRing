@@ -3,12 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -52,5 +54,19 @@ class User extends Authenticatable
     public function events()
 {
     return $this->hasMany(Event::class);
+}
+
+public function canAccessPanel(\Filament\Panel $panel): bool
+{
+    // Dejamos que el cliente entre al admin SOLO para que el login funcione
+    if ($panel->getId() === 'admin') {
+        return $this->role === 'admin' || $this->role === 'client';
+    }
+
+    if ($panel->getId() === 'cliente' || $panel->getId() === 'client') {
+        return $this->role === 'client';
+    }
+
+    return false;
 }
 }

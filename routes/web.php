@@ -14,3 +14,7 @@ Route::get('/salones', function(){
 Route::get('/servicios', function(){
     return view('pages/servicios');
 });
+
+Route::get('/cliente/login', function () {
+    return redirect('/admin/login');
+})->name('filament.cliente.auth.login');

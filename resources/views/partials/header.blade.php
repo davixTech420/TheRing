@@ -11,10 +11,6 @@
 <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans antialiased overflow-x-hidden selection:bg-amber-500 selection:text-black transition-colors duration-500 relative">
 
 
-
-
-
-
     <nav x-data="{ 
         scrolled: false, 
         mobileMenuOpen: false 
@@ -63,7 +59,7 @@
                     </button>
 
                     {{-- Botón de acceso al Dashboard Filament --}}
-                    <a href="/admin" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
+                    <a href="/cliente" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
                         <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                         <span class="relative flex items-center gap-2">
                             Panel Cliente
