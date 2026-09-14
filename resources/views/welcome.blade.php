@@ -94,8 +94,7 @@
              <div class="absolute bottom-8 left-8 border-l-2 border-b-2 border-amber-500/50 w-16 h-16"></div>
              <div class="absolute bottom-8 right-8 border-r-2 border-b-2 border-amber-500/50 w-16 h-16"></div>
              <div class="absolute bottom-12 left-12 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl pointer-events-auto hover:border-amber-500/50 transition-colors cursor-pointer map-info-card shadow-xl">
-                 <h3 class="text-zinc-900 dark:text-white font-bold text-lg">The Ring HQ</h3>
-                 <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1 font-mono">LAT 4.6097° N | LON 74.0817° W</p>
+                 <h3 class="text-zinc-900 dark:text-white font-bold text-lg">Eventos The Ring</h3>
                  <div class="mt-4 flex items-center gap-2">
                      <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div><span class="text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-300">Sistemas en línea</span>
                  </div>

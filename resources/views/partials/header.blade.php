@@ -41,8 +41,8 @@
                 <div class="hidden lg:flex items-center space-x-10">
                     <a href="/salones" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Salones</a>
                     <a href="/servicios" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Servicios</a>
-                    <a href="#experiencia" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Experiencia</a>
-                    <a href="#reservas" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Reservas</a>
+                    <a href="/experiencia" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Experiencia</a>
+                    <a href="/reservas" class="text-sm font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-300 hover:text-amber-500 dark:hover:text-amber-500 transition-colors">Reservas</a>
                 </div>
 
                 {{-- BOTONES Y ACCIONES DE ESCRITORIO --}}
@@ -108,8 +108,8 @@
             <div class="flex flex-col space-y-8 items-center text-center">
                 <a href="/salones" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Salones</a>
                 <a href="/servicios" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Servicios</a>
-                <a href="#experiencia" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Experiencia</a>
-                <a href="#reservas" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Reservas</a>
+                <a href="/experiencia" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Experiencia</a>
+                <a href="/reservas" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Reservas</a>
 
                 <div class="pt-8 w-full border-t border-zinc-200 dark:border-zinc-800">
                     <a href="/admin" class="block w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold uppercase tracking-widest rounded-2xl">

@@ -7,11 +7,11 @@
             {{-- COLUMNA 1: Branding y Descripción --}}
             <div class="lg:col-span-4 space-y-6">
                 <a href="/" class="flex items-center gap-2 group inline-flex">
-                    <div class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white flex items-center justify-center transition-transform group-hover:rotate-12">
-                        <span class="text-white dark:text-zinc-900 font-black text-xl leading-none">R</span>
+                    <div class="w-8 h-8 rounded-lg bg-zinc-900  flex items-center justify-center transition-transform group-hover:rotate-12">
+                         <img width=50 height=50 src="favicon.ico" alt="The Ring">
                     </div>
                     <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
-                        THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">RING</span>
+                        Eventos <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">The Ring</span>
                     </span>
                 </a>
                 <p class="text-zinc-500 dark:text-zinc-400 font-light max-w-sm transition-colors">
@@ -86,7 +86,7 @@
 
 
     {{-- 7. WHATSAPP --}}
-    <div class="fixed bottom-8 right-8 z-50"><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3">
+    <div class="fixed bottom-8 right-8 z-50"><a href="https://wa.me/+573015717859" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3">
             <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white text-sm font-bold py-2 px-4 rounded-xl opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 shadow-xl backdrop-blur-md">Agenda tu Demo</div>
             <div class="w-16 h-16 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:scale-110 transition-all duration-300 relative cursor-pointer">
                 <div class="absolute inset-0 rounded-full border border-green-400 animate-ping opacity-75"></div><svg class="w-8 h-8 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
