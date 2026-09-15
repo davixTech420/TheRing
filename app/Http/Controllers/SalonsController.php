@@ -20,7 +20,9 @@ public function index(){
         $salones = Salons::paginate(3); // Cambia 10 por el número de registros que quieras mostrar por página
 
         // Pasar los datos a la vista Blade
-        return view('welcome', compact('salones'));
+        return view('pages.salones', [
+        'salones' => $salones
+    ]);
 
 }
     

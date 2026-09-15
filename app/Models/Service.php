@@ -13,4 +13,10 @@ class Service extends Model
                 ->withPivot('quantity', 'customization')
                 ->withTimestamps();
 }
+protected $fillable = [
+    'name',
+    'category',
+    'base_price',
+    
+];
 }

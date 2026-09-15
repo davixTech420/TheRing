@@ -9,9 +9,7 @@ Route::get('/', function () {
     return view('welcome',[SalonsController::class, 'index']);
 });
 
-Route::get('/salones', function(){
-    return view('pages/salones' ,[SalonsController::class, 'index']);
-});
+Route::get('/salones', [SalonsController::class, 'index']);
 
 
 Route::get('/servicios', function(){

@@ -50,9 +50,7 @@ class StaffResource extends Resource
     {
         return [
             'index' => ListStaff::route('/'),
-            'create' => CreateStaff::route('/create'),
-            'view' => ViewStaff::route('/{record}'),
-            'edit' => EditStaff::route('/{record}/edit'),
+            
         ];
     }
 }

@@ -109,33 +109,7 @@
 
 
 
- {{-- 3. MISIÓN Y VISIÓN --}}
- <section class="py-32 px-6 max-w-7xl mx-auto relative corporate-section">
-     <div class="text-center mb-20 corporate-header"><span class="text-amber-500 font-mono text-xs uppercase tracking-widest">Nuestra Filosofía</span>
-         <h2 class="text-4xl md:text-6xl font-bold tracking-tight mt-2 text-zinc-900 dark:text-white">Redefiniendo el Estándar</h2>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-         <div class="md:col-span-7 bg-white/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-[2.5rem] p-10 md:p-14 backdrop-blur-xl relative overflow-hidden group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-colors duration-500 reveal-box">
-             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 dark:bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-amber-500/20 transition-all duration-700"></div>
-             <div class="w-14 h-14 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-8 border border-zinc-200 dark:border-zinc-700 transition-colors duration-500"><svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                 </svg></div>
-             <h3 class="text-3xl font-black mb-4">Nuestra Misión</h3>
-             <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-light transition-colors duration-500">Automatizar y perfeccionar la producción de eventos complejos, entregando a organizadores y clientes una plataforma centralizada que elimine el margen de error mediante tecnología en tiempo real.</p>
-         </div>
-         <div class="md:col-span-5 bg-white/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-[2.5rem] p-10 md:p-14 backdrop-blur-xl relative overflow-hidden group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-colors duration-500 reveal-box">
-             <div class="w-14 h-14 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-8 border border-zinc-200 dark:border-zinc-700 transition-colors duration-500"><svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                 </svg></div>
-             <h3 class="text-3xl font-black mb-4">Visión 2030</h3>
-             <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-light transition-colors duration-500">Consolidarnos como el sistema operativo líder para la gestión integral de recintos, staff e inventario tecnológico de alta gama.</p>
-         </div>
-         <div class="md:col-span-4 bg-amber-500 text-zinc-950 rounded-[2.5rem] p-10 flex flex-col justify-center reveal-box shadow-lg"><span class="text-5xl font-black tracking-tighter">0 ms</span><span class="text-sm font-bold uppercase tracking-widest mt-2 opacity-80">Latencia JSON</span></div>
-         <div class="md:col-span-4 bg-white/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col justify-center reveal-box"><span class="text-5xl font-black tracking-tighter text-zinc-900 dark:text-white transition-colors duration-500">+50</span><span class="text-sm font-bold uppercase tracking-widest mt-2 text-zinc-500">Salones Mapeados</span></div>
-         <div class="md:col-span-4 bg-white/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col justify-center reveal-box"><span class="text-5xl font-black tracking-tighter text-zinc-900 dark:text-white transition-colors duration-500">100%</span><span class="text-sm font-bold uppercase tracking-widest mt-2 text-zinc-500">Personalización Modular</span></div>
-     </div>
- </section>
+ 
 
 
 
