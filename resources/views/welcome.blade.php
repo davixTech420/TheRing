@@ -70,15 +70,6 @@
  </section>
 
 
-
-
-
-
-
-
-
-
-
  @include('components.formEvent')
 
  {{-- 6. MAPA TÁCTICO --}}
@@ -93,12 +84,30 @@
              <div class="absolute top-8 right-8 border-r-2 border-t-2 border-amber-500/50 w-16 h-16"></div>
              <div class="absolute bottom-8 left-8 border-l-2 border-b-2 border-amber-500/50 w-16 h-16"></div>
              <div class="absolute bottom-8 right-8 border-r-2 border-b-2 border-amber-500/50 w-16 h-16"></div>
-             <div class="absolute bottom-12 left-12 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl pointer-events-auto hover:border-amber-500/50 transition-colors cursor-pointer map-info-card shadow-xl">
-                 <h3 class="text-zinc-900 dark:text-white font-bold text-lg">Eventos The Ring</h3>
-                 <div class="mt-4 flex items-center gap-2">
-                     <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div><span class="text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-300">Sistemas en línea</span>
-                 </div>
-             </div>
+            <div class="absolute bottom-12 left-12 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl pointer-events-auto hover:border-amber-500/50 transition-colors shadow-xl map-info-card flex flex-col gap-5">
+    
+    <!-- Info original -->
+    <div>
+        <h3 class="text-zinc-900 dark:text-white font-bold text-lg">Eventos The Ring</h3>
+        <div class="mt-2 flex items-center gap-2">
+            <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-300">Sistemas en línea</span>
+        </div>
+    </div>
+
+    <!-- Nuevo botón de Navegación GPS -->
+    <a href="https://www.google.com/maps/dir/?api=1&destination=4.5506186,-74.0921332" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold uppercase tracking-widest rounded-xl transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+        Trazar Ruta
+    </a>
+
+</div>
          </div>
          <div class="absolute inset-0 z-10 scale-110 map-iframe-wrapper"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.6204666345434!2d-74.09213319999998!3d4.550618599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99006ca77b4d%3A0x4441edf6f9ccea9f!2sEventos%20THE%20RING!5e0!3m2!1ses!2sco!4v1789274453732!5m2!1ses!2sco" class="w-full h-full border-0 pointer-events-auto" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
          <div class="absolute inset-0 z-15 bg-gradient-to-t from-zinc-50 via-transparent to-zinc-50 dark:from-zinc-950 dark:via-transparent dark:to-zinc-950 pointer-events-none opacity-80 transition-colors duration-500"></div>

@@ -19,11 +19,7 @@
     </div>
 
     {{-- SECCIÓN INTRO --}}
-    <section class="venue-intro relative flex min-h-screen flex-col justify-between overflow-hidden px-6 py-8 md:px-12 md:py-10">
-        <div class="flex items-center justify-between text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-white/50 intro-badge">
-            <span>Casa / Espacios</span>
-            <span>{{ str_pad($salones->count(), 2, '0', STR_PAD_LEFT) }} salones</span>
-        </div>
+    <section class="venue-intro relative flex min-h-screen flex-col justify-between overflow-hidden px-6 py-8 md:px-12 md:py-10  mt-20">
         <div class="max-w-6xl">
             <p class="venue-kicker mb-7 font-mono text-xs uppercase tracking-[0.4em] text-amber-600 dark:text-amber-400 intro-badge">Una colección para recordar</p>
             <h1 class="venue-title max-w-5xl text-[clamp(4.2rem,13vw,12rem)] font-black uppercase leading-[.8] tracking-[-.08em]">
@@ -108,19 +104,10 @@
         <p class="font-mono text-xs uppercase tracking-[.3em] text-zinc-500 dark:text-white/40">El escenario de tu próxima historia</p>
         <div class="text-right">
             <p class="mb-2 text-sm text-zinc-500 dark:text-white/40">¿Hablamos?</p>
-            <a href="mailto:reservas@tudominio.com" class="text-xl font-bold text-amber-600 dark:text-amber-400 transition-colors hover:text-zinc-900 dark:hover:text-white md:text-3xl cursor-hover-target">reservas@tudominio.com</a>
+            <a href="mailto:eventosthering@gmail.com" class="text-xl font-bold text-amber-600 dark:text-amber-400 transition-colors hover:text-zinc-900 dark:hover:text-white md:text-3xl cursor-hover-target">reservas@tudominio.com</a>
         </div>
     </footer>
     
-    {{-- PAGINACIÓN FLOTANTE --}}
-    <div class="fixed bottom-7 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/70 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-zinc-500 dark:text-white/55 backdrop-blur-xl transition-colors duration-500 shadow-xl dark:shadow-none">
-        <span class="venue-current text-amber-600 dark:text-amber-400 font-bold">01</span>
-        <span>/</span>
-        <span>{{ str_pad($salones->count(), 2, '0', STR_PAD_LEFT) }}</span>
-        <span class="ml-2 h-1 w-20 overflow-hidden rounded-full bg-zinc-200 dark:bg-white/15">
-            <span class="venue-mini-progress block h-full w-0 bg-amber-500"></span>
-        </span>
-    </div>
 </div>
 @endif
 
