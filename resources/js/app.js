@@ -514,49 +514,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ========================================================
     // VISTA: SALONES
     // ========================================================
-    if (document.querySelector(".venues-horizontal-wrapper")) {
-        
+  window.addEventListener('load', () => {
+    const horizontalWrapper = document.querySelector(".venues-horizontal-wrapper");
+    
+    if (horizontalWrapper) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ==========================================
+        // 1. CURSOR FLUIDO Y DINÁMICO
+        // ==========================================
         const cursor = document.querySelector('.custom-cursor');
         const cursorDot = document.querySelector('.custom-cursor-dot');
         
-        if (cursor && cursorDot) {
-            const xMoveCursor = gsap.quickTo(cursor, "x", {duration: 0.5, ease: "power3"});
-            const yMoveCursor = gsap.quickTo(cursor, "y", {duration: 0.5, ease: "power3"});
-            const xMoveDot = gsap.quickTo(cursorDot, "x", {duration: 0.1, ease: "power3"});
-            const yMoveDot = gsap.quickTo(cursorDot, "y", {duration: 0.1, ease: "power3"});
+        
 
-            window.addEventListener("mousemove", (e) => {
-                xMoveCursor(e.clientX - 12); 
-                yMoveCursor(e.clientY - 12);
-                xMoveDot(e.clientX - 4);
-                yMoveDot(e.clientY - 4);
-            });
-
-            document.querySelectorAll('.cursor-hover-target').forEach(target => {
-                target.addEventListener('mouseenter', () => {
-                    gsap.to(cursor, {scale: 3, backgroundColor: "rgba(245, 158, 11, 0.2)", duration: 0.3});
-                });
-                target.addEventListener('mouseleave', () => {
-                    gsap.to(cursor, {scale: 1, backgroundColor: "transparent", duration: 0.3});
-                });
-            });
-        }
-
-        const horizontalWrapper = document.querySelector(".venues-horizontal-wrapper");
+        // ==========================================
+        // 2. ANIMACIÓN DE ENTRADA (INTRO)
+        // ==========================================
         const tlIntro = gsap.timeline();
-        tlIntro.from(".intro-badge", { y: "100%", duration: 0.8, ease: "power3.out", delay: 0.2 })
-               .from(".intro-title-line", { y: "100%", duration: 1, stagger: 0.1, ease: "power4.out" }, "-=0.5")
-               .from(".intro-scroll-indicator", { opacity: 0, y: 20, duration: 1 }, "-=0.2");
+        tlIntro.from(".intro-badge", { y: "150%", opacity: 0, duration: 1, ease: "expo.out", delay: 0.3 })
+               .from(".intro-title-line", { y: "120%", rotation: 2, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power4.out" }, "-=0.7")
+               .from(".intro-scroll-indicator", { opacity: 0, y: -20, duration: 1.5, ease: "sine.inOut" }, "-=0.4");
 
+        // ==========================================
+        // 3. LÓGICA CORE: SCROLL HORIZONTAL
+        // ==========================================
         const scrollContainer = document.querySelector(".venues-horizontal-container");
         const slides = gsap.utils.toArray(".venue-slide");
         const progressBar = document.querySelector(".scroll-progress-bar");
 
+        function getScrollWidth() {
+            return -(scrollContainer.scrollWidth - window.innerWidth);
+        }
+
         const horizontalTween = gsap.to(scrollContainer, {
-            x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+            x: getScrollWidth,
             ease: "none"
         });
 
@@ -566,72 +584,160 @@ document.addEventListener("DOMContentLoaded", () => {
             end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`,
             pin: true,
             animation: horizontalTween,
-            scrub: 1,
+            scrub: 1.2, // Aumentado ligeramente para mayor inercia y suavidad
             invalidateOnRefresh: true,
             onUpdate: (self) => {
-                if (progressBar) gsap.to(progressBar, { width: `${self.progress * 100}%`, duration: 0.1, ease: "none" });
+                if (progressBar) {
+                    // Actualización progresiva más fluida de la barra
+                    gsap.to(progressBar, { width: `${self.progress * 100}%`, duration: 0.15, ease: "power1.out" });
+                }
             }
         });
 
+        // ==========================================
+        // 4. ANIMACIONES INTERNAS POR SLIDE (SALONES)
+        // ==========================================
         slides.forEach((slide) => {
-            const mainMask = slide.querySelector(".venue-main-img-mask");
-            const bgImage = slide.querySelector(".venue-parallax-bg");
             
+            // Efecto cinemático de revelado de imagen (Cortina)
+            const mainMask = slide.querySelector(".venue-main-img-mask");
             if(mainMask) {
                 gsap.fromTo(mainMask, 
-                    { clipPath: "polygon(20% 0, 80% 0, 80% 100%, 20% 100%)" },
+                    { clipPath: "polygon(10% 0, 90% 0, 90% 100%, 10% 100%)", scale: 1.1 },
                     {
-                        clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)", ease: "power2.inOut",
-                        scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 90%", end: "center center", scrub: true }
+                        clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)", 
+                        scale: 1,
+                        ease: "power2.inOut",
+                        scrollTrigger: { 
+                            trigger: slide, 
+                            containerAnimation: horizontalTween, 
+                            start: "left 85%", 
+                            end: "center center", 
+                            scrub: 1.5 
+                        }
                     }
                 );
             }
 
+            // Parallax del fondo del salón (Profundidad)
+            const bgImage = slide.querySelector(".venue-parallax-bg");
             if(bgImage) {
                 gsap.to(bgImage, {
-                    xPercent: 20, ease: "none",
-                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left right", end: "right left", scrub: true }
+                    xPercent: 25, 
+                    scale: 1.1, // Escala ligeramente para evitar bordes blancos
+                    ease: "none",
+                    scrollTrigger: { 
+                        trigger: slide, 
+                        containerAnimation: horizontalTween, 
+                        start: "left right", 
+                        end: "right left", 
+                        scrub: true 
+                    }
                 });
             }
 
-            if(slide.querySelector(".venue-float-1")) {
-                gsap.from(slide.querySelector(".venue-float-1"), {
-                    y: 150, x: -80, rotation: -10, opacity: 0,
-                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 80%", end: "center center", scrub: 1 }
+            // Elementos flotantes: Revelado + Animación "Viva" Infinita
+            const float1 = slide.querySelector(".venue-float-1");
+            const float2 = slide.querySelector(".venue-float-2");
+
+            if(float1) {
+                gsap.from(float1, {
+                    y: 200, x: -100, rotation: -15, opacity: 0,
+                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 80%", end: "center center", scrub: 1.5 },
+                    onComplete: () => {
+                        // Animación continua de "respiración" para dar vida
+                        gsap.to(float1, { y: "-=15", rotation: "-=2", duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+                    }
                 });
             }
 
-            if(slide.querySelector(".venue-float-2")) {
-                gsap.from(slide.querySelector(".venue-float-2"), {
-                    y: -150, x: 80, rotation: 10, opacity: 0,
-                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 70%", end: "center center", scrub: 1.5 }
+            if(float2) {
+                gsap.from(float2, {
+                    y: -200, x: 100, rotation: 15, opacity: 0,
+                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 70%", end: "center center", scrub: 1.5 },
+                    onComplete: () => {
+                        // Animación continua, desfasada de la anterior
+                        gsap.to(float2, { y: "+=20", rotation: "+=3", duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.5 });
+                    }
                 });
             }
 
+            // Revelado de textos de información del salón
             const textLines = slide.querySelectorAll(".text-line");
             if(textLines.length > 0) {
+                // Asume que los textos tienen 'overflow: hidden' en CSS para este efecto
                 gsap.from(textLines, {
-                    y: "100%", duration: 1, stagger: 0.1, ease: "power4.out",
-                    scrollTrigger: { trigger: slide, containerAnimation: horizontalTween, start: "left 60%", toggleActions: "play none none reverse" }
+                    y: "110%", 
+                    rotation: 3, 
+                    opacity: 0,
+                    duration: 1.2, 
+                    stagger: 0.1, 
+                    ease: "expo.out",
+                    scrollTrigger: { 
+                        trigger: slide, 
+                        containerAnimation: horizontalTween, 
+                        start: "left 65%", 
+                        toggleActions: "play none none reverse" 
+                    }
                 });
             }
         });
 
+        // ==========================================
+        // 5. BOTONES MAGNÉTICOS AVANZADOS (3D / Parallax Interno)
+        // ==========================================
         document.querySelectorAll('.magnetic-wrapper').forEach(wrapper => {
             const btn = wrapper.querySelector('.magnetic-button');
+            const btnText = btn?.querySelector('.magnetic-text'); // Si tienes un span de texto adentro
+            
             if(btn) {
                 wrapper.addEventListener('mousemove', (e) => {
                     const rect = wrapper.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3; 
-                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                    gsap.to(btn, { x: x, y: y, duration: 1, ease: "power3.out" });
+                    // Multiplicadores determinan la fuerza magnética
+                    const x = (e.clientX - rect.left - rect.width / 2) * 0.4; 
+                    const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+                    
+                    gsap.to(btn, { x: x, y: y, duration: 0.6, ease: "power3.out" });
+                    
+                    // Si el botón tiene texto, lo mueve un poco menos creando un efecto 3D
+                    if(btnText) {
+                        gsap.to(btnText, { x: x * 0.5, y: y * 0.5, duration: 0.6, ease: "power3.out" });
+                    }
                 });
+                
                 wrapper.addEventListener('mouseleave', () => {
-                    gsap.to(btn, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)" });
+                    // Elastic.out le da ese "latigazo" satisfactorio al soltarlo
+                    gsap.to(btn, { x: 0, y: 0, duration: 1.2, ease: "elastic.out(1, 0.3)" });
+                    if(btnText) {
+                        gsap.to(btnText, { x: 0, y: 0, duration: 1.2, ease: "elastic.out(1, 0.3)" });
+                    }
                 });
             }
         });
     }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // ========================================================
