@@ -2,6 +2,85 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<div class="relative w-full h-screen overflow-hidden bg-black">
+    
+    {{-- Título superpuesto --}}
+    <div class="absolute z-20 pointer-events-none top-24 left-12">
+        <h1 class="text-4xl font-black tracking-tighter text-white uppercase drop-shadow-2xl">
+            Recorrido <br> Virtual
+        </h1>
+        <p class="font-mono text-xs tracking-widest text-amber-500 uppercase mt-2">The Ring Experience</p>
+    </div>
+
+    {{-- Contenedor del Tour 360 --}}
+    <div id="panorama" class="w-full h-screen"></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @if($salones->isEmpty())
 <main class="grid min-h-screen place-items-center bg-zinc-50 dark:bg-zinc-950 px-6 text-center text-zinc-900 dark:text-white transition-colors duration-500">
     <div>

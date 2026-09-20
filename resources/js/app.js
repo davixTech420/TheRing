@@ -410,6 +410,8 @@ import './bootstrap';
 import Alpine from 'alpinejs';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import 'pannellum/build/pannellum.css';
+import 'pannellum/build/pannellum.js';
 
 // 1. Inicializar Alpine.js
 window.Alpine = Alpine;
@@ -541,6 +543,113 @@ document.addEventListener("DOMContentLoaded", () => {
     // VISTA: SALONES
     // ========================================================
   window.addEventListener('load', () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Validar que estamos en la vista del recorrido
+    if (document.getElementById('panorama')) {
+        
+        window.pannellum.viewer('panorama', {
+            // Configuración Global
+            "default": {
+                "firstScene": "entrada",
+                "author": "The Ring",
+                "sceneFadeDuration": 1000, // Transición suave entre cuartos (1 segundo)
+                "autoLoad": true,
+                "compass": false,
+                // "hotSpotDebug": true // HABILITA ESTO para ver las coordenadas al hacer clic
+            },
+
+            // Definición de Cuartos y Conexiones
+            "scenes": {
+                
+                "entrada": {
+                    "title": "Entrada Principal",
+                    "type": "equirectangular",
+                    "panorama": "/tour360/prueba.jpg", // Ruta de tu foto en public/storage
+                    "pitch": -3, // Inclinación inicial de la cámara
+                    "yaw": 117,  // Rotación inicial de la cámara
+                    "hotSpots": [
+                        {
+                            "pitch": -2.1, // Eje vertical (arriba/abajo)
+                            "yaw": 132.9,  // Eje horizontal (izquierda/derecha)
+                            "type": "scene",
+                            "text": "Ingresar al Gran Salón",
+                            "sceneId": "gran_salon" // Hacia dónde te lleva este clic
+                        }
+                    ]
+                },
+
+                "gran_salon": {
+                    "title": "Gran Salón Imperial",
+                    "type": "equirectangular",
+                 
+                    "panorama": "/tour360/prueba.jpg",
+                    "yaw": 5,
+                    "hotSpots": [
+                        {
+                            "pitch": -0.6,
+                            "yaw": -37.1,
+                            "type": "scene",
+                            "text": "Volver a la Entrada",
+                            "sceneId": "entrada"
+                        }
+                    ]
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const horizontalWrapper = document.querySelector(".venues-horizontal-wrapper");
     
     if (horizontalWrapper) {
