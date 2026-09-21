@@ -586,36 +586,83 @@ document.addEventListener("DOMContentLoaded", () => {
                 "entrada": {
                     "title": "Entrada Principal",
                     "type": "equirectangular",
-                    "panorama": "/tour360/prueba.jpg", // Ruta de tu foto en public/storage
+                    "panorama": "/tour360/entrada.jpg", // Ruta de tu foto en public/storage
                     "pitch": -3, // Inclinación inicial de la cámara
                     "yaw": 117,  // Rotación inicial de la cámara
                     "hotSpots": [
                         {
-                            "pitch": -2.1, // Eje vertical (arriba/abajo)
-                            "yaw": 132.9,  // Eje horizontal (izquierda/derecha)
+                            "pitch": -180.1, // Eje vertical (arriba/abajo)
+                            "yaw": 180,  // Eje horizontal (izquierda/derecha)
                             "type": "scene",
-                            "text": "Ingresar al Gran Salón",
-                            "sceneId": "gran_salon" // Hacia dónde te lleva este clic
+                            "text": "Ingresar Eventos The Ring",
+                            "sceneId": "recepcion" // Hacia dónde te lleva este clic
                         }
                     ]
                 },
 
-                "gran_salon": {
+                "recepcion": {
                     "title": "Gran Salón Imperial",
                     "type": "equirectangular",
                  
-                    "panorama": "/tour360/prueba.jpg",
+                    "panorama": "/tour360/recepcion.jpg",
                     "yaw": 5,
                     "hotSpots": [
                         {
-                            "pitch": -0.6,
-                            "yaw": -37.1,
+                            "pitch": -2,
+                            "yaw": 10.1,
                             "type": "scene",
                             "text": "Volver a la Entrada",
                             "sceneId": "entrada"
+                        },
+                        {
+                            "pitch": -190,
+                            "yaw": 360.1,
+                            "type": "scene",
+                            "text": "Escaleras",
+                            "sceneId": "escalerasprimer"
+                        }
+                    ]
+                },
+                
+                "escalerasprimer": {
+                    "title": "Gran Salón Imperial",
+                    "type": "equirectangular",
+                 
+                    "panorama": "/tour360/escalerasprimer.jpg",
+                    "yaw": 5,
+                    "hotSpots": [
+                        {
+                            "pitch": -2,
+                            "yaw": 10.1,
+                            "type": "scene",
+                            "text": "Volver a la recepcion",
+                            "sceneId": "recepcion"
+                        },
+                        {
+                            "pitch": -190,
+                            "yaw": 360.1,
+                            "type": "scene",
+                            "text": "Escaleras",
+                            "sceneId": "escalerasprimer"
                         }
                     ]
                 }
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
         });
     }
