@@ -642,7 +642,54 @@ document.addEventListener("DOMContentLoaded", () => {
                             "pitch": -190,
                             "yaw": 360.1,
                             "type": "scene",
-                            "text": "Escaleras",
+                            "text": "Segundo Piso",
+                            "sceneId": "segundopiso"
+                        }
+                    ]
+                },
+
+                "segundopiso": {
+                    "title": "Gran Salón Imperial",
+                    "type": "equirectangular",
+                 
+                    "panorama": "/tour360/segundo.jpeg",
+                    "yaw": 5,
+                    "hotSpots": [
+                        {
+                            "pitch": -2,
+                            "yaw": 10.1,
+                            "type": "scene",
+                            "text": "Escaleras Tercer Piso",
+                            "sceneId": "escalerastercer"
+                        },
+                        {
+                            "pitch": -190,
+                            "yaw": 360.1,
+                            "type": "scene",
+                            "text": "Escaleras Primer Piso",
+                            "sceneId": "escalerasprimer"
+                        }
+                    ]
+                },
+                "escalerastercer": {
+                    "title": "Gran Salón Imperial",
+                    "type": "equirectangular",
+                 
+                    "panorama": "/tour360/escalerastercer.jpeg",
+                    "yaw": 5,
+                    "hotSpots": [
+                        {
+                            "pitch": -2,
+                            "yaw": 10.1,
+                            "type": "scene",
+                            "text": "Escaleras Tercer Piso",
+                            "sceneId": "recepcion"
+                        },
+                        {
+                            "pitch": -190,
+                            "yaw": 360.1,
+                            "type": "scene",
+                            "text": "Escaleras Primer Piso",
                             "sceneId": "escalerasprimer"
                         }
                     ]
