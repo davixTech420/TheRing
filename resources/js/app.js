@@ -1,408 +1,3 @@
-/* import './bootstrap';
-import Alpine from 'alpinejs';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-
-
-
-
-
-//WELCOME
-// 1. Inicializar Alpine.js
-window.Alpine = Alpine;
-Alpine.start();
-
-// 2. Registrar GSAP
-gsap.registerPlugin(ScrollTrigger);
-
-// 3. Ejecutar animaciones solo cuando el DOM esté listo
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- HERO REVEAL ---
-    const heroTl = gsap.timeline();
-    heroTl.to(".hero-media", { scale: 1, duration: 2.5, ease: "power4.out" })
-          .to(".hero-title-part", { y: 0, stagger: 0.15, duration: 1.2, ease: "power4.out" }, "-=2")
-          .to(".scroll-indicator", { opacity: 1, y: 10, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" }, "-=0.5");
-
-    gsap.to(".hero-bg-container", {
-        scrollTrigger: { trigger: ".hero-section", start: "top top", end: "bottom top", scrub: 1 },
-        y: 150, opacity: 0
-    });
-
-    // --- BENTO BOX (Misión/Visión) ---
-    gsap.from(".corporate-header", {
-        scrollTrigger: { trigger: ".corporate-section", start: "top 80%", end: "top 50%", scrub: 1 },
-        y: 50, opacity: 0
-    });
-    
-    gsap.from(".reveal-box", {
-        scrollTrigger: { trigger: ".corporate-section", start: "top 70%", end: "top 30%", scrub: 1 },
-        y: 80, opacity: 0, scale: 0.95, stagger: 0.2
-    });
-
-    // --- SCROLL HORIZONTAL (LA MAGIA APPLE) ---
-    const horizontalScroll = document.querySelector('.horizontal-wrapper');
-    if (horizontalScroll) {
-        const panels = gsap.utils.toArray('.panel');
-
-        gsap.to(panels, {
-            xPercent: -100 * (panels.length - 1), 
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".horizontal-scroll-container", 
-                pin: true, 
-                scrub: 1, 
-                snap: 1 / (panels.length - 1), 
-                end: () => "+=" + horizontalScroll.offsetWidth 
-            }
-        });
-
-        gsap.utils.toArray('.reveal-img-container').forEach(container => {
-            let img = container.querySelector('img');
-            gsap.set(container, { clipPath: "inset(20% 20% 20% 20% round 30px)" });
-            gsap.set(img, { scale: 1.4 });
-            
-            gsap.to(container, {
-                clipPath: "inset(0% 0% 0% 0% round 32px)",
-                scrollTrigger: { trigger: container, containerAnimation: gsap.getById(horizontalScroll), start: "left center", end: "right center", scrub: 1 }
-            });
-            gsap.to(img, {
-                scale: 1, 
-                scrollTrigger: { trigger: container, containerAnimation: gsap.getById(horizontalScroll), start: "left center", end: "right center", scrub: 1 }
-            });
-        });
-    }
-
-    // --- MOTOR DE RESERVAS (FORMULARIO) ---
-    gsap.from(".builder-header", { 
-        scrollTrigger: { trigger: ".builder-section", start: "top 80%", end: "top 50%", scrub: 1 }, 
-        y: 100, opacity: 0 
-    });
-    
-    gsap.from(".form-interactive-container", {
-        scrollTrigger: { trigger: ".form-interactive-container", start: "top 90%", end: "top 40%", scrub: 1.5 },
-        y: 100, scale: 0.95, opacity: 0, transformOrigin: "bottom center"
-    });
-
-    // --- MAPA TÁCTICO ---
-    gsap.from(".map-header", { 
-        scrollTrigger: { trigger: ".map-section", start: "top 80%", end: "top 50%", scrub: 1 }, 
-        y: 60, opacity: 0 
-    });
-    
-    gsap.fromTo(".map-container", 
-        { clipPath: "inset(40% 40% 40% 40% round 100px)", opacity: 0 },
-        { clipPath: "inset(0% 0% 0% 0% round 48px)", opacity: 1, scrollTrigger: { trigger: ".map-section", start: "top 75%", end: "top 25%", scrub: 1.2 } }
-    );
-    
-    gsap.from(".map-iframe-wrapper", { 
-        scrollTrigger: { trigger: ".map-section", start: "top 90%", end: "bottom top", scrub: true }, 
-        scale: 1.3, rotation: 1 
-    });
-    
-    gsap.from(".map-info-card", { 
-        scrollTrigger: { trigger: ".map-container", start: "top 50%", end: "top 30%", scrub: 1 }, 
-        x: -50, opacity: 0 
-    });
-
-    // --- FOOTER REVEAL ---
-    gsap.from(".footer-content > div", {
-        scrollTrigger: { trigger: ".footer-section", start: "top 90%", end: "top 60%", scrub: 1 },
-        y: 50, opacity: 0, stagger: 0.1
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//SALONES
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- 1. CURSOR MAGNÉTICO PERSONALIZADO ---
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorDot = document.querySelector('.custom-cursor-dot');
-    
-    if (cursor && cursorDot) {
-        // quickTo es súper óptimo para seguir el mouse sin lag
-        const xMoveCursor = gsap.quickTo(cursor, "x", {duration: 0.5, ease: "power3"});
-        const yMoveCursor = gsap.quickTo(cursor, "y", {duration: 0.5, ease: "power3"});
-        const xMoveDot = gsap.quickTo(cursorDot, "x", {duration: 0.1, ease: "power3"});
-        const yMoveDot = gsap.quickTo(cursorDot, "y", {duration: 0.1, ease: "power3"});
-
-        window.addEventListener("mousemove", (e) => {
-            xMoveCursor(e.clientX - 12); // -12 para centrar el círculo de 24px
-            yMoveCursor(e.clientY - 12);
-            xMoveDot(e.clientX - 4);
-            yMoveDot(e.clientY - 4);
-        });
-
-        // Efecto Hover en imágenes
-        const hoverTargets = document.querySelectorAll('.cursor-hover-target');
-        hoverTargets.forEach(target => {
-            target.addEventListener('mouseenter', () => {
-                gsap.to(cursor, {scale: 3, backgroundColor: "rgba(245, 158, 11, 0.2)", duration: 0.3});
-            });
-            target.addEventListener('mouseleave', () => {
-                gsap.to(cursor, {scale: 1, backgroundColor: "transparent", duration: 0.3});
-            });
-        });
-    }
-
-    // --- 2. LÓGICA DE SCROLL HORIZONTAL AVANZADA ---
-    const horizontalWrapper = document.querySelector(".venues-horizontal-wrapper");
-    
-    if (horizontalWrapper) {
-        
-        // Animación Intro Enmascarada (Las letras suben desde lo oculto)
-        const tlIntro = gsap.timeline();
-        tlIntro.from(".intro-badge", { y: "100%", duration: 0.8, ease: "power3.out", delay: 0.2 })
-               .from(".intro-title-line", { y: "100%", duration: 1, stagger: 0.1, ease: "power4.out" }, "-=0.5")
-               .from(".intro-scroll-indicator", { opacity: 0, y: 20, duration: 1 }, "-=0.2");
-
-        const scrollContainer = document.querySelector(".venues-horizontal-container");
-        const slides = gsap.utils.toArray(".venue-slide");
-        const progressBar = document.querySelector(".scroll-progress-bar");
-
-        function getScrollAmount() {
-            return -(scrollContainer.scrollWidth - window.innerWidth);
-        }
-
-        const horizontalTween = gsap.to(scrollContainer, {
-            x: getScrollAmount,
-            ease: "none"
-        });
-
-        // Trigger Principal
-        ScrollTrigger.create({
-            trigger: horizontalWrapper,
-            start: "top top",
-            end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`,
-            pin: true,
-            animation: horizontalTween,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            // Actualiza la barra de progreso global
-            onUpdate: (self) => {
-                if (progressBar) {
-                    gsap.to(progressBar, { width: `${self.progress * 100}%`, duration: 0.1, ease: "none" });
-                }
-            }
-        });
-
-        // --- 3. ANIMACIONES INDIVIDUALES POR SALÓN ---
-        slides.forEach((slide) => {
-            
-            // Efecto de expansión de la imagen principal
-            const mainMask = slide.querySelector(".venue-main-img-mask");
-            const bgImage = slide.querySelector(".venue-parallax-bg");
-            
-            if(mainMask) {
-                gsap.fromTo(mainMask, 
-                    { clipPath: "polygon(20% 0, 80% 0, 80% 100%, 20% 100%)" },
-                    {
-                        clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)",
-                        ease: "power2.inOut",
-                        scrollTrigger: {
-                            trigger: slide,
-                            containerAnimation: horizontalTween,
-                            start: "left 90%",
-                            end: "center center",
-                            scrub: true
-                        }
-                    }
-                );
-            }
-
-            if(bgImage) {
-                gsap.to(bgImage, {
-                    xPercent: 20, // Movimiento parallax fuerte
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: slide,
-                        containerAnimation: horizontalTween,
-                        start: "left right",
-                        end: "right left",
-                        scrub: true
-                    }
-                });
-            }
-
-            // Fotos flotantes con direcciones opuestas
-            if(slide.querySelector(".venue-float-1")) {
-                gsap.from(slide.querySelector(".venue-float-1"), {
-                    y: 150, x: -80, rotation: -10, opacity: 0,
-                    scrollTrigger: {
-                        trigger: slide, containerAnimation: horizontalTween,
-                        start: "left 80%", end: "center center", scrub: 1
-                    }
-                });
-            }
-
-            if(slide.querySelector(".venue-float-2")) {
-                gsap.from(slide.querySelector(".venue-float-2"), {
-                    y: -150, x: 80, rotation: 10, opacity: 0,
-                    scrollTrigger: {
-                        trigger: slide, containerAnimation: horizontalTween,
-                        start: "left 70%", end: "center center", scrub: 1.5
-                    }
-                });
-            }
-
-            // Animación de Texto (Emergiendo línea por línea)
-            const textLines = slide.querySelectorAll(".text-line");
-            if(textLines.length > 0) {
-                gsap.from(textLines, {
-                    y: "100%", // Sube desde afuera del overflow-hidden
-                    duration: 1,
-                    stagger: 0.1,
-                    ease: "power4.out",
-                    scrollTrigger: {
-                        trigger: slide,
-                        containerAnimation: horizontalTween,
-                        start: "left 60%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            }
-        });
-
-        // --- 4. BOTONES MAGNÉTICOS ---
-        const magnetics = document.querySelectorAll('.magnetic-wrapper');
-        magnetics.forEach(wrapper => {
-            const btn = wrapper.querySelector('.magnetic-button');
-            if(btn) {
-                wrapper.addEventListener('mousemove', (e) => {
-                    const rect = wrapper.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3; // Factor magnético
-                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                    gsap.to(btn, { x: x, y: y, duration: 1, ease: "power3.out" });
-                });
-                wrapper.addEventListener('mouseleave', () => {
-                    gsap.to(btn, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)" });
-                });
-            }
-        });
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//SERVICIOS
-
-document.addEventListener("DOMContentLoaded", () => {
-    
-    const track = document.querySelector('.customizer-track');
-    
-    if (track) {
-        // TIMELINE MAESTRO: Atado 100% a la rueda del ratón
-        const tlMaster = gsap.timeline({
-            scrollTrigger: {
-                trigger: track,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.5, // Suavizado casi instantáneo para máxima sensación de control
-                pin: ".customizer-visualizer"
-            }
-        });
-
-        // 1. Escaneo Estructural (0% al 33% del scroll)
-        // La línea láser barre la pantalla mientras recorta la segunda imagen
-        tlMaster.to(".scanner-line", { left: "100%", ease: "none", duration: 3 }, 0)
-                .to(".layer-layout", { clipPath: "inset(0 0% 0 0)", ease: "none", duration: 3 }, 0)
-                .to(".layer-arch", { scale: 0.9, z: -200, filter: "blur(4px)", duration: 3 }, 0);
-
-        // Ocultar láser al terminar de escanear
-        tlMaster.to(".scanner-line", { opacity: 0, duration: 0.1 }, 3);
-
-        // 2. Expansión Lumínica (33% al 66% del scroll)
-        // El círculo de iluminación crece desde el centro hacia los bordes
-        tlMaster.to(".layer-lighting", { clipPath: "circle(150% at 50% 50%)", ease: "power2.inOut", duration: 3 }, 3)
-                .to(".layer-layout", { scale: 1.05, duration: 3 }, 3);
-
-        // 3. Impacto de Rigging y FX (66% al 100% del scroll)
-        // La última capa entra con un golpe de inercia y rotación 3D
-        tlMaster.fromTo(".layer-fx", 
-                { opacity: 0, scale: 1.2, rotationZ: 5 },
-                { opacity: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 3 }, 6
-        );
-
-        // 4. Parallax Inverso para las Tarjetas UI
-        const cards = gsap.utils.toArray('.step-card');
-        cards.forEach((card, i) => {
-            gsap.fromTo(card, 
-                { y: 150, opacity: 0, rotationX: -15 },
-                {
-                    y: 0, opacity: 1, rotationX: 0,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 80%",
-                        end: "top 40%",
-                        scrub: 1
-                    }
-                }
-            );
-        });
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
-
 import "./bootstrap";
 import Alpine from "alpinejs";
 import gsap from "gsap";
@@ -625,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Configuración Global
                 default: {
                     firstScene: "entrada",
-                    author: "The Ring",
+                    author: "Eventos The Ring",
                     sceneFadeDuration: 1000, // Transición suave entre cuartos (1 segundo)
                     autoLoad: true,
                     compass: false,
@@ -640,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         panorama: "/tour360/entrada.jpg", // Ruta de tu foto en public/storage
                         pitch: 3, // Inclinación inicial de la cámara
                         yaw: 1, // Rotación inicial de la cámara
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -180.1, // Eje vertical (arriba/abajo)
@@ -652,10 +248,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     recepcion: {
-                        title: "Gran Salón Imperial",
+                        title: "Recepcion",
                         type: "equirectangular",
                         panorama: "/tour360/recepcion.jpg",
                         yaw: 150,
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -2,
@@ -668,18 +265,20 @@ document.addEventListener("DOMContentLoaded", () => {
                                 pitch: -180,
                                 yaw: 355.1,
                                 type: "scene",
-                                text: "Escaleras",
+                                text: "Subir escaleras",
                                 sceneId: "escalerasprimer",
                             },
                         ],
                     },
 
                     escalerasprimer: {
-                        title: "Gran Salón Imperial",
+                        title: "Escaleras",
                         type: "equirectangular",
 
                         panorama: "/tour360/escalerasprimer.jpg",
-                        yaw: 220,
+                        pitch: -3,
+                        yaw: 260,
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -35,
@@ -699,11 +298,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     segundopiso: {
-                        title: "Gran Salón Imperial",
+                        title: "Segundo piso",
                         type: "equirectangular",
 
                         panorama: "/tour360/segundo.jpeg",
-                        yaw: 5,
+                        yaw: 87,
+                        pitch: -7,
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -12,
@@ -722,22 +323,24 @@ document.addEventListener("DOMContentLoaded", () => {
                         ],
                     },
                     escalerastercer: {
-                        title: "Gran Salón Imperial",
+                        title: "Escaleras",
                         type: "equirectangular",
 
                         panorama: "/tour360/escalerastercer.jpg",
-                        yaw: 5,
+                        yaw: 270,
+                        pitch: -12,
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -185,
                                 yaw: 400,
                                 type: "scene",
-                                text: "Tercer Piso",
+                                text: "Tercer piso",
                                 sceneId: "tercerpiso",
                             },
                             {
-                                pitch: -50,
-                                yaw: -750,
+                                pitch: -53,
+                                yaw: -742,
                                 type: "scene",
                                 text: "Segundo piso",
                                 sceneId: "segundopiso",
@@ -746,14 +349,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     tercerpiso: {
-                        title: "Gran Salón Imperial",
+                        title: "Salon",
                         type: "equirectangular",
 
                         panorama: "/tour360/tercer.jpg",
-                        yaw: 5,
+                        yaw: 290,
+                        pitch: -8,
+                        hfov: 200,
                         hotSpots: [
                             {
-                                pitch: -2,
+                                pitch: -18,
                                 yaw: 50,
                                 type: "scene",
                                 text: "Subir escaleras",
@@ -761,60 +366,64 @@ document.addEventListener("DOMContentLoaded", () => {
                             },
                             {
                                 pitch: -145,
-                                yaw: 300,
+                                yaw: 320,
                                 type: "scene",
                                 text: "Bajar escaleras",
                                 sceneId: "escalerastercer",
                             },
                             {
-                                pitch: -2,
+                                pitch: -12,
                                 yaw: 16.1,
                                 type: "scene",
                                 text: "Baño mujeres",
                                 sceneId: "bañosmujeres",
                             },
                             {
-                                pitch: -170,
+                                pitch: -158,
                                 yaw: 355,
                                 type: "scene",
-                                text: "Baño Hombres",
+                                text: "Baño hombres",
                                 sceneId: "bañoshombres",
                             },
                             {
                                 pitch: -170,
                                 yaw: 470,
                                 type: "scene",
-                                text: "Primer Salon",
+                                text: "Salon nubes",
                                 sceneId: "primersalon",
                             },
                         ],
                     },
 
                     bañoshombres: {
-                        title: "Gran Salón Imperial",
+                        title: "Baño hombres",
                         type: "equirectangular",
                         panorama: "/tour360/bañohombre.jpg",
-                        yaw: 5,
+                        yaw: 170,
+                        pitch: -8,
+                        hfov: 200,
                         hotSpots: [
                             {
-                                pitch: -2,
+                                pitch: -8,
                                 yaw: 180,
                                 type: "scene",
-                                text: "Salon",
+                                text: "Tercer piso",
                                 sceneId: "tercerpiso",
                             },
                         ],
                     },
 
                     bañosmujeres: {
-                        title: "Gran Salón Imperial",
+                        title: "Baño mujeres",
                         type: "equirectangular",
 
                         panorama: "/tour360/bañomujer.jpg",
-                        yaw: 5,
+                        yaw: 115,
+                        pitch: -8,
+                        hfov: 200,
                         hotSpots: [
                             {
-                                pitch: -2,
+                                pitch: -12,
                                 yaw: 110,
                                 type: "scene",
                                 text: "Salon",
@@ -824,36 +433,38 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     primersalon: {
-                        title: "Gran Salón Imperial",
+                        title: "Salon nubes",
                         type: "equirectangular",
 
                         panorama: "/tour360/primersalon.jpg",
                         yaw: 5,
+                        pitch: 1,
+                        hfov: 200,
                         hotSpots: [
                             {
-                                pitch: -2,
-                                yaw: 50,
+                                pitch: -5,
+                                yaw: 98,
                                 type: "scene",
-                                text: "Lado derecho",
-                                sceneId: "tercerpiso",
+                                text: "Vista lateral derecha",
+                                sceneId: "ladoderecho",
                             },
                             {
-                                pitch: -8,
+                                pitch: -15,
                                 yaw: -90,
                                 type: "scene",
-                                text: "lado izquierdo",
+                                text: "Vista lateral izquierda",
                                 sceneId: "ladoizquierdo",
                             },
                             {
-                                pitch: -2,
-                                yaw: 50,
+                                pitch: -12,
+                                yaw: 182,
                                 type: "scene",
-                                text: "entrada",
+                                text: "Salir del salon",
                                 sceneId: "tercerpiso",
                             },
                             {
-                                pitch: -2,
-                                yaw: 50,
+                                pitch: -5,
+                                yaw: 245,
                                 type: "scene",
                                 text: "Cocina",
                                 sceneId: "cocinasegundo",
@@ -861,9 +472,33 @@ document.addEventListener("DOMContentLoaded", () => {
                         ],
                     },
 
+                    ladoderecho: {
+                        title: "Vista lateral derecha",
+                        type: "equirectangular",
+                        panorama: "/tour360/ladoderecho.jpg",
+                        yaw: 120,
+                        pitch: 1,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: -3,
+                                yaw: 68,
+                                type: "scene",
+                                text: "Salir del salon",
+                                sceneId: "tercerpiso",
+                            },
+                            {
+                                pitch: -2,
+                                yaw: 100,
+                                type: "scene",
+                                text: "Centro del salon",
+                                sceneId: "primersalon",
+                            },
+                        ],
+                    },
 
-                     ladoizquierdo: {
-                        title: "Gran Salón Imperial",
+                    ladoizquierdo: {
+                        title: "Vista lateral izquierda",
                         type: "equirectangular",
                         panorama: "/tour360/ladoizquierdo.jpg",
                         yaw: 5,
@@ -872,17 +507,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                 pitch: -2,
                                 yaw: 10.1,
                                 type: "scene",
+                                text: "Salir del salon",
+                                sceneId: "tercerpiso",
+                            },
+                             {
+                                pitch: -2,
+                                yaw: 10.1,
+                                type: "scene",
                                 text: "Centro del salon",
                                 sceneId: "primersalon",
                             },
-                             {
+                            {
                                 pitch: -2,
                                 yaw: -150,
                                 type: "scene",
                                 text: "Cocina",
                                 sceneId: "cocinasegundo",
                             },
-                            
                         ],
                     },
 
@@ -899,15 +540,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 text: "Volver al salon",
                                 sceneId: "primersalon",
                             },
-                            
                         ],
                     },
-
-
-
-
-
-
 
                     escalerascuarto: {
                         title: "Gran Salón Imperial",
