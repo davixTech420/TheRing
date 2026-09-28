@@ -502,24 +502,25 @@ document.addEventListener("DOMContentLoaded", () => {
                         type: "equirectangular",
                         panorama: "/tour360/ladoizquierdo.jpg",
                         yaw: 5,
+                        hfov: 200,
                         hotSpots: [
                             {
                                 pitch: -2,
-                                yaw: 10.1,
+                                yaw: 140,
                                 type: "scene",
                                 text: "Salir del salon",
                                 sceneId: "tercerpiso",
                             },
-                             {
+                            {
                                 pitch: -2,
-                                yaw: 10.1,
+                                yaw: 105,
                                 type: "scene",
                                 text: "Centro del salon",
                                 sceneId: "primersalon",
                             },
                             {
-                                pitch: -2,
-                                yaw: -150,
+                                pitch: -8,
+                                yaw: -130,
                                 type: "scene",
                                 text: "Cocina",
                                 sceneId: "cocinasegundo",
@@ -528,7 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     cocinasegundo: {
-                        title: "Gran Salón Imperial",
+                        title: "Cocina",
                         type: "equirectangular",
                         panorama: "/tour360/cocinasegundo.jpg",
                         yaw: 5,
@@ -544,27 +545,245 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 
                     escalerascuarto: {
-                        title: "Gran Salón Imperial",
+                        title: "Escaleras",
                         type: "equirectangular",
                         panorama: "/tour360/escalerascuarto.jpg",
                         yaw: 5,
+                        hfov: 200,
                         hotSpots: [
                             {
-                                pitch: -2,
-                                yaw: 10.1,
+                                pitch: 20,
+                                yaw: 222,
                                 type: "scene",
                                 text: "Cuarto piso",
-                                sceneId: "tercerpiso",
+                                sceneId: "cuartopiso",
                             },
                             {
-                                pitch: -2,
-                                yaw: 10.1,
+                                pitch: -60,
+                                yaw: -24,
                                 type: "scene",
                                 text: "Tercer piso",
                                 sceneId: "tercerpiso",
                             },
                         ],
                     },
+
+                    cuartopiso: {
+                        title: "Gran Salón Imperial",
+                        type: "equirectangular",
+                        panorama: "/tour360/cuartopiso.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: -10,
+                                yaw: -100,
+                                type: "scene",
+                                text: "Vista lateral izquierda",
+                                sceneId: "vistaizquierdacuarto",
+                            },
+                            {
+                                pitch: -8,
+                                yaw: -175,
+                                type: "scene",
+                                text: "Bajar escaleras",
+                                sceneId: "escalerascuarto",
+                            },
+                            {
+                                pitch: 2,
+                                yaw: 120,
+                                type: "scene",
+                                text: "Vista lateral derecha",
+                                sceneId: "vistaderechacuarto",
+                            },
+                            {
+                                pitch: 2,
+                                yaw: 90,
+                                type: "scene",
+                                text: "Vista lateral derecha",
+                                sceneId: "vistaderecuarto",
+                            },
+                            {
+                                pitch: -5,
+                                yaw: -125,
+                                type: "scene",
+                                text: "Cocina",
+                                sceneId: "cocinacuarto",
+                            },
+                            {
+                                pitch: -5,
+                                yaw: -165,
+                                type: "scene",
+                                text: "Baño mujeres",
+                                sceneId: "bañomujerescuarto",
+                            },
+                            {
+                                pitch: -5,
+                                yaw: 150,
+                                type: "scene",
+                                text: "Baño Hombres",
+                                sceneId: "bañohombrescuarto",
+                            },
+                        ],
+                    },
+
+                    vistaizquierdacuarto: {
+                        title: "Gran Salón Imperial",
+                        type: "equirectangular",
+                        panorama: "/tour360/vistaizquierdacuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: 20,
+                                yaw: 222,
+                                type: "scene",
+                                text: "Cocina",
+                                sceneId: "tercerpiso",
+                            },
+                            {
+                                pitch: -60,
+                                yaw: -24,
+                                type: "scene",
+                                text: "Tercer piso",
+                                sceneId: "tercerpiso",
+                            },
+                        ],
+                    },
+
+                    vistaderechacuarto: {
+                        title: "Gran Salón Imperial",
+                        type: "equirectangular",
+                        panorama: "/tour360/vistaizquierdacuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: 20,
+                                yaw: 222,
+                                type: "scene",
+                                text: "Vista lateral",
+                                sceneId: "vistaderecuarto",
+                            },
+                            {
+                                pitch: -60,
+                                yaw: -24,
+                                type: "scene",
+                                text: "Centro del salon",
+                                sceneId: "cuartopiso",
+                            },
+                             {
+                                pitch: 20,
+                                yaw: 222,
+                                type: "scene",
+                                text: "Cuarto piso",
+                                sceneId: "tercerpiso",
+                            },
+                            {
+                                pitch: -60,
+                                yaw: -24,
+                                type: "scene",
+                                text: "Tercer piso",
+                                sceneId: "tercerpiso",
+                            },
+                        ],
+                    },
+
+                    vistaderecuarto: {
+                        title: "Gran Salón Imperial",
+                        type: "equirectangular",
+                        panorama: "/tour360/vistaderecuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: -5,
+                                yaw: 170,
+                                type: "scene",
+                                text: "Vista lateral",
+                                sceneId: "vistaderechacuarto",
+                            },
+                            {
+                                pitch:-5,
+                                yaw: 230,
+                                type: "scene",
+                                text: "Bajar escaleras",
+                                sceneId: "escalerascuarto",
+                            },
+                            {
+                                pitch: -5,
+                                yaw: 205,
+                                type: "scene",      
+                                text: "Baño hombres",
+                                sceneId: "bañohombrescuarto",
+                            },
+                            {
+                                pitch: -7,
+                                yaw: 250,
+                                type: "scene",
+                                text: "Centro del salon",
+                                sceneId: "cuartopiso",
+                            },
+                        ],
+                    },
+
+                    cocinacuarto: {
+                        title: "Cocina",
+                        type: "equirectangular",
+                        panorama: "/tour360/cocinacuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: 2,
+                                yaw: 10,
+                                type: "scene",
+                                text: "Vista lateral izquierda",
+                                sceneId: "vistaizquierdacuarto",
+                            },
+                            {
+                                pitch: 2,
+                                yaw: 20,
+                                type: "scene",
+                                text: "Centro salon",
+                                sceneId: "cuartopiso",
+                            },
+                        ],
+                    },
+
+                    bañomujerescuarto: {
+                        title: "Baño mujeres",
+                        type: "equirectangular",
+                        panorama: "/tour360/bañomujerescuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: 2,
+                                yaw: 100,
+                                type: "scene",
+                                text: "Centro salon",
+                                sceneId: "cuartopiso",
+                            },
+                        ],
+                    },
+
+                    bañohombrescuarto: {
+                        title: "Baño hombres",
+                        type: "equirectangular",
+                        panorama: "/tour360/bañohombrescuarto.jpg",
+                        yaw: 5,
+                        hfov: 200,
+                        hotSpots: [
+                            {
+                                pitch: 2,
+                                yaw:170,
+                                type: "scene",
+                                text: "Centro salon",
+                                sceneId: "cuartopiso",
+                            },
+                        ],
+                    },  
                 },
             });
         }
