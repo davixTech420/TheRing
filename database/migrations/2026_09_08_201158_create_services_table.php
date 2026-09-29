@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('services', function (Blueprint $table) {
-        $table->id();
-        $table->string('name'); // Ej: Buffet Italiano, DJ en vivo
-        $table->string('category'); // Ej: catering, entertainment
-        $table->decimal('base_price', 10, 2)->default(0);
-        $table->timestamps();
-    });
+            $table->id();
+            $table->string('name'); // Ej: Temática Neón, Paquete Fotografía
+            $table->string('category'); // Ej: tematica, medios, catering
+            $table->text('description')->nullable(); // Ej: "50 fotos impresas más el fotógrafo y álbum"
+            $table->json('images')->nullable(); // Array para guardar las rutas de las fotos a mostrar en el formulario
+            $table->decimal('base_price', 10, 2)->default(0);
+            $table->timestamps();
+        });
     }
 
     /**

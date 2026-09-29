@@ -65,22 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @if($salones->isEmpty())
 <main class="grid min-h-screen place-items-center bg-zinc-50 dark:bg-zinc-950 px-6 text-center text-zinc-900 dark:text-white transition-colors duration-500">
     <div>
