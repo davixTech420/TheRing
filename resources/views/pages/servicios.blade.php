@@ -1,5 +1,189 @@
 @include('partials.header')
 
+{{-- 
+    VISTA SERVICIOS - EXPERIENCIA "CONFIGURADOR VIP"
+    Todo el JS se ejecuta nativamente desde Vite (app.js). 
+    No hay CDNs externos ni scripts de GSAP en línea.
+    Dark & Light mode 100% adaptados con Tailwind.
+--}}
+<div class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-amber-500 selection:text-black transition-colors duration-500">
+
+    {{-- EXPERIENCIA VISUALIZADOR (Controlado estrictamente por app.js) --}}
+    <div class="customizer-track relative w-full h-[400vh]">
+        
+        {{-- VISUALIZADOR FIJO --}}
+        <div class="customizer-visualizer h-screen w-full sticky top-0 overflow-hidden bg-zinc-950 flex items-center justify-center">
+            <div class="relative w-full h-full max-w-[2000px] mx-auto">
+                
+                {{-- 1. BASE ARQUITECTÓNICA --}}
+                <div class="layer-arch absolute inset-0 z-10 bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2000" class="w-full h-full object-cover opacity-30 dark:opacity-40 filter grayscale" alt="Arquitectura Base">
+                </div>
+
+                {{-- 2. MOBILIARIO Y DISEÑO (Revelado por Scanner) --}}
+                <div class="layer-layout absolute inset-0 z-20" style="clip-path: inset(0 100% 0 0);">
+                    <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=2000" class="w-full h-full object-cover opacity-80" alt="Mobiliario">
+                </div>
+                
+                {{-- LÍNEA ESCÁNER --}}
+                <div class="scanner-line absolute top-0 bottom-0 left-0 w-1 bg-amber-500 shadow-[0_0_30px_rgba(245,158,11,1)] z-30" style="left: 0%;"></div>
+
+                {{-- 3. ILUMINACIÓN (Revelado por Círculo) --}}
+                <div class="layer-lighting absolute inset-0 z-40" style="clip-path: circle(0% at 50% 50%);">
+                    <div class="absolute inset-0 bg-amber-500/20 dark:bg-amber-500/30 mix-blend-color-dodge z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c090be5bc6e?q=80&w=2000" class="w-full h-full object-cover opacity-70 mix-blend-screen" alt="Iluminación">
+                </div>
+
+                {{-- 4. EFECTOS ESPECIALES (Opacity & Scale) --}}
+                <div class="layer-fx absolute inset-0 z-50 pointer-events-none opacity-0">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2000" class="w-full h-full object-cover opacity-90 mix-blend-screen" alt="Efectos">
+                </div>
+
+                {{-- CORTINA PROTECTORA (Garantiza legibilidad de las tarjetas en Light y Dark Mode) --}}
+                <div class="absolute inset-0 z-50 bg-gradient-to-r from-zinc-50 via-zinc-50/70 to-transparent dark:from-zinc-950 dark:via-zinc-950/70 pointer-events-none transition-colors duration-500 w-[95%] md:w-1/2"></div>
+            </div>
+        </div>
+
+        {{-- PASOS (Tarjetas flotantes manejadas por app.js) --}}
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
+            <div class="max-w-7xl mx-auto h-full flex flex-col justify-around px-6 md:px-12 py-[40vh] md:py-[50vh]">
+                
+                {{-- PASO 1 --}}
+                <div class="step-card pointer-events-auto w-full max-w-md backdrop-blur-2xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-white/10 p-8 md:p-10 rounded-[2rem] shadow-2xl transition-colors duration-500">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500 font-bold mb-3 block">Fase 01</span>
+                    <h3 class="text-3xl md:text-4xl font-black uppercase text-zinc-900 dark:text-white mb-4 leading-none">Arquitectura</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base font-light leading-relaxed">Seleccionamos el espacio perfecto. Un lienzo en blanco donde comenzaremos a diseñar la experiencia desde cero, adaptando cada rincón a tu visión.</p>
+                </div>
+
+                {{-- PASO 2 --}}
+                <div class="step-card pointer-events-auto w-full max-w-md backdrop-blur-2xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-white/10 p-8 md:p-10 rounded-[2rem] shadow-2xl transition-colors duration-500 mt-20 md:mt-32">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500 font-bold mb-3 block">Fase 02</span>
+                    <h3 class="text-3xl md:text-4xl font-black uppercase text-zinc-900 dark:text-white mb-4 leading-none">Mobiliario</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base font-light leading-relaxed">Escaneamos e integramos el mobiliario de lujo. Desde sillería premium hasta mesas imperiales, diseñando el flujo perfecto para los invitados.</p>
+                </div>
+
+                {{-- PASO 3 --}}
+                <div class="step-card pointer-events-auto w-full max-w-md backdrop-blur-2xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-white/10 p-8 md:p-10 rounded-[2rem] shadow-2xl transition-colors duration-500 mt-20 md:mt-32">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500 font-bold mb-3 block">Fase 03</span>
+                    <h3 class="text-3xl md:text-4xl font-black uppercase text-zinc-900 dark:text-white mb-4 leading-none">Iluminación</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base font-light leading-relaxed">Bañamos el espacio de color. Sistemas de luces robóticas y arquitectónicas que transforman completamente la energía de la recepción.</p>
+                </div>
+
+                {{-- PASO 4 --}}
+                <div class="step-card pointer-events-auto w-full max-w-md backdrop-blur-2xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-white/10 p-8 md:p-10 rounded-[2rem] shadow-2xl transition-colors duration-500 mt-20 md:mt-32">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500 font-bold mb-3 block">Fase 04</span>
+                    <h3 class="text-3xl md:text-4xl font-black uppercase text-zinc-900 dark:text-white mb-4 leading-none">Efectos FX</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base font-light leading-relaxed">El toque final para explotar la pista. Nubes de hielo seco, pólvora fría, disparos de CO2 y shows que elevan el evento a otro nivel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- SECCIÓN CATÁLOGO (Lista todos los servicios adicionales al final de la experiencia) --}}
+    <div class="relative z-10 py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 text-zinc-900 dark:text-white">Nuestro <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Catálogo</span></h2>
+            <p class="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-lg font-light">Explora la colección completa de elementos disponibles para personalizar tu evento.</p>
+        </div>
+
+        {{-- Componente Alpine puramente para manejar el HTML limpio sin repetir código --}}
+        <div x-data="portfolioGrid()">
+            <template x-for="(category, index) in categories" :key="index">
+                <div class="mb-24">
+                    <div class="flex items-center gap-6 mb-12">
+                        <div class="w-12 h-px bg-amber-500"></div>
+                        <h3 class="text-3xl font-black uppercase text-zinc-900 dark:text-white" x-text="category.name"></h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <template x-for="(item, iIndex) in category.items" :key="iIndex">
+                            <div class="group relative rounded-3xl overflow-hidden h-80 shadow-lg dark:shadow-2xl border border-zinc-200 dark:border-white/5 cursor-pointer bg-zinc-200 dark:bg-zinc-900">
+                                <img :src="item.img" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="absolute bottom-0 left-0 p-6 transform transition-transform duration-500 group-hover:-translate-y-2">
+                                    <h4 class="text-xl font-bold text-white mb-2 drop-shadow-md" x-text="item.name"></h4>
+                                    <p class="text-white/80 text-xs font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" x-text="item.desc"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    {{-- CTA FINAL --}}
+    <section class="py-32 px-6 text-center bg-amber-500 text-black">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8">Tu Visión,<br>Nuestra Realidad.</h2>
+        <a href="/cotizar" class="inline-block px-12 py-5 bg-zinc-900 text-white font-black uppercase tracking-widest text-xs rounded-full hover:bg-black hover:scale-105 transition-transform shadow-2xl">
+            Iniciar Configuración VIP
+        </a>
+    </section>
+
+</div>
+
+{{-- Data de Categorías en Alpine (Sin lógica GSAP) --}}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('portfolioGrid', () => ({
+            categories: [
+                {
+                    name: 'Efectos & Shows',
+                    items: [
+                        { name: 'Trajes y Robots LED', desc: 'Personajes gigantes iluminados con tecnología LED.', img: 'https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=800' },
+                        { name: 'Cámara de Niebla', desc: 'Efecto de niebla baja que crea un piso de nubes.', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800' },
+                        { name: 'Pistas LED', desc: 'Pistas infinitas programables al ritmo del DJ.', img: 'https://images.unsplash.com/photo-1470229722913-7c090be5bc6e?q=80&w=800' },
+                    ]
+                },
+                {
+                    name: 'Gastronomía',
+                    items: [
+                        { name: 'Fuente de Chocolate', desc: 'Cascada ininterrumpida de chocolate premium.', img: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800' },
+                        { name: 'Mesa de Dulces', desc: 'Candy bar temático y repostería fina.', img: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?q=80&w=800' },
+                    ]
+                },
+                {
+                    name: 'Escenografía',
+                    items: [
+                        { name: 'Sillería VIP', desc: 'Sillas Trono Reales, Isabelinas y Tiffany.', img: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=800' },
+                        { name: 'Backings', desc: 'Muros florales y estructuras para fotos.', img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800' },
+                    ]
+                },
+                {
+                    name: 'Tecnología',
+                    items: [
+                        { name: 'Plataforma 360', desc: 'Video booths rotativos con brazos robóticos.', img: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800' },
+                        { name: 'Pantallas LED', desc: 'Módulos de alta resolución para proyecciones.', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800' },
+                    ]
+                }
+            ]
+        }));
+    });
+</script>
+
+@include('partials.footer')
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- @include('partials.header')
+
     {{-- 
         NUEVA UI/UX "OTRO NIVEL" 
         Diseño ultra organizado por secciones (Sticky Sidebar + Scroll Gallery).
@@ -188,3 +372,4 @@
     </script>
 
 @include('partials.footer')
+ -->

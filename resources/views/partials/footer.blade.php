@@ -23,10 +23,10 @@
             <div class="lg:col-span-2">
                 <h4 class="text-zinc-900 dark:text-white font-bold uppercase tracking-widest text-sm mb-6 transition-colors">Explorar</h4>
                 <ul class="space-y-4">
-                    <li><a href="#salones" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Salones Inteligentes</a></li>
-                    <li><a href="#staff" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Staff y Operaciones</a></li>
-                    <li><a href="#inventario" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Inventario Técnico</a></li>
-                    <li><a href="#reservas" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Motor de Reservas</a></li>
+                    <li><a href="/salones" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Salones Inteligentes</a></li>
+                    
+                    
+                    <li><a href="/reservas" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Motor de Reservas</a></li>
                 </ul>
             </div>
 
@@ -66,24 +66,20 @@
             </p>
 
             <div class="flex items-center space-x-6">
-                {{-- Iconos de Redes Sociales con Blade FontAwesome --}}
-                <a href="#" class="text-zinc-400 hover:text-pink-500 transition-colors transform hover:scale-110">
+                <a href="https://www.instagram.com/eventosthering/" class="text-zinc-400 hover:text-pink-500 transition-colors transform hover:scale-110">
                     <span class="sr-only">Instagram</span>
                     <x-fab-instagram class="w-6 h-6" />
                 </a>
-                <a href="#" class="text-zinc-400 hover:text-blue-500 transition-colors transform hover:scale-110">
+                <a href="https://www.facebook.com/theringEventos" class="text-zinc-400 hover:text-blue-500 transition-colors transform hover:scale-110">
                     <span class="sr-only">Facebook</span>
                     <x-fab-facebook class="w-6 h-6" />
                 </a>
-                <a href="#" class="text-zinc-400 hover:text-black dark:hover:text-white transition-colors transform hover:scale-110">
+                <a href="https://www.tiktok.com/@eventosthering02" class="text-zinc-400 hover:text-black dark:hover:text-white transition-colors transform hover:scale-110">
                     <span class="sr-only">TikTok</span>
                     <x-fab-tiktok class="w-6 h-6" />
                 </a>
-                <a href="#" class="text-zinc-400 hover:text-black dark:hover:text-white transition-colors transform hover:scale-110">
-                    <span class="sr-only">X (Twitter)</span>
-                    <x-fab-x-twitter class="w-6 h-6" />
-                </a>
-                <a href="#" class="text-zinc-400 hover:text-red-500 transition-colors transform hover:scale-110">
+                
+                <a href="https://www.youtube.com/@EventosTheRing" class="text-zinc-400 hover:text-red-500 transition-colors transform hover:scale-110">
                     <span class="sr-only">YouTube</span>
                     <x-fab-youtube class="w-6 h-6" />
                 </a>
