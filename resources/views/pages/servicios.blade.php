@@ -115,7 +115,7 @@
     {{-- CTA FINAL --}}
     <section class="py-32 px-6 text-center bg-amber-500 text-black">
         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8">Tu Visión,<br>Nuestra Realidad.</h2>
-        <a href="/cotizar" class="inline-block px-12 py-5 bg-zinc-900 text-white font-black uppercase tracking-widest text-xs rounded-full hover:bg-black hover:scale-105 transition-transform shadow-2xl">
+        <a href="/reservas" class="inline-block px-12 py-5 bg-zinc-900 text-white font-black uppercase tracking-widest text-xs rounded-full hover:bg-black hover:scale-105 transition-transform shadow-2xl">
             Iniciar Configuración VIP
         </a>
     </section>
