@@ -221,10 +221,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 default: {
                     firstScene: "entrada",
                     author: "Eventos The Ring",
-                    sceneFadeDuration: 1000, // Transición suave entre cuartos (1 segundo)
+                    sceneFadeDuration: 250, // Transición suave entre cuartos (1 segundo)
                     autoLoad: true,
+                    preload: true,
                     compass: false,
-                    // "hotSpotDebug": true // HABILITA ESTO para ver las coordenadas al hacer clic
+                   
                 },
 
                 // Definición de Cuartos y Conexiones
@@ -232,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     entrada: {
                         title: "Entrada Principal",
                         type: "equirectangular",
-                        panorama: "/tour360/entrada.jpg", // Ruta de tu foto en public/storage
+                        panorama: "/tour360/entrada.webp", // Ruta de tu foto en public/storage
                         pitch: 3, // Inclinación inicial de la cámara
                         yaw: 1, // Rotación inicial de la cámara
                         hfov: 200,
@@ -250,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     recepcion: {
                         title: "Recepcion",
                         type: "equirectangular",
-                        panorama: "/tour360/recepcion.jpg",
+                        panorama: "/tour360/recepcion.webp",
                         yaw: 150,
                         hfov: 200,
                         hotSpots: [
@@ -275,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Escaleras",
                         type: "equirectangular",
 
-                        panorama: "/tour360/escalerasprimer.jpg",
+                        panorama: "/tour360/escalerasprimer.webp",
                         pitch: -3,
                         yaw: 260,
                         hfov: 200,
@@ -301,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Segundo piso",
                         type: "equirectangular",
 
-                        panorama: "/tour360/segundo.jpeg",
+                        panorama: "/tour360/segundo.webp",
                         yaw: 87,
                         pitch: -7,
                         hfov: 200,
@@ -326,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Escaleras",
                         type: "equirectangular",
 
-                        panorama: "/tour360/escalerastercer.jpg",
+                        panorama: "/tour360/escalerastercer.webp",
                         yaw: 270,
                         pitch: -12,
                         hfov: 200,
@@ -352,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Salon",
                         type: "equirectangular",
 
-                        panorama: "/tour360/tercer.jpg",
+                        panorama: "/tour360/tercer.webp",
                         yaw: 290,
                         pitch: -8,
                         hfov: 200,
@@ -398,7 +399,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     bañoshombres: {
                         title: "Baño hombres",
                         type: "equirectangular",
-                        panorama: "/tour360/bañohombre.jpg",
+                        panorama: "/tour360/bañohombre.webp",
                         yaw: 170,
                         pitch: -8,
                         hfov: 200,
@@ -417,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Baño mujeres",
                         type: "equirectangular",
 
-                        panorama: "/tour360/bañomujer.jpg",
+                        panorama: "/tour360/bañomujer.webp",
                         yaw: 115,
                         pitch: -8,
                         hfov: 200,
@@ -436,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Salon nubes",
                         type: "equirectangular",
 
-                        panorama: "/tour360/primersalon.jpg",
+                        panorama: "/tour360/primersalon.webp",
                         yaw: 5,
                         pitch: 1,
                         hfov: 200,
@@ -475,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ladoderecho: {
                         title: "Vista lateral derecha",
                         type: "equirectangular",
-                        panorama: "/tour360/ladoderecho.jpg",
+                        panorama: "/tour360/ladoderecho.webp",
                         yaw: 120,
                         pitch: 1,
                         hfov: 200,
@@ -500,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ladoizquierdo: {
                         title: "Vista lateral izquierda",
                         type: "equirectangular",
-                        panorama: "/tour360/ladoizquierdo.jpg",
+                        panorama: "/tour360/ladoizquierdo.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -531,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cocinasegundo: {
                         title: "Cocina",
                         type: "equirectangular",
-                        panorama: "/tour360/cocinasegundo.jpg",
+                        panorama: "/tour360/cocinasegundo.webp",
                         yaw: 5,
                         hotSpots: [
                             {
@@ -547,7 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     escalerascuarto: {
                         title: "Escaleras",
                         type: "equirectangular",
-                        panorama: "/tour360/escalerascuarto.jpg",
+                        panorama: "/tour360/escalerascuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -571,7 +572,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cuartopiso: {
                         title: "Gran Salón Imperial",
                         type: "equirectangular",
-                        panorama: "/tour360/cuartopiso.jpg",
+                        panorama: "/tour360/cuartopiso.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -630,7 +631,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     vistaizquierdacuarto: {
                         title: "Gran Salón Imperial",
                         type: "equirectangular",
-                        panorama: "/tour360/vistaizquierdacuarto.jpg",
+                        panorama: "/tour360/vistaizquierdacuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -668,7 +669,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     vistaderechacuarto: {
                         title: "Gran Salón imperial",
                         type: "equirectangular",
-                        panorama: "/tour360/vistaderechacuarto.jpg",
+                        panorama: "/tour360/vistaderechacuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -692,7 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     vistaderecuarto: {
                         title: "Gran Salón Imperial",
                         type: "equirectangular",
-                        panorama: "/tour360/vistaderecuarto.jpg",
+                        panorama: "/tour360/vistaderecuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -730,7 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cocinacuarto: {
                         title: "Cocina",
                         type: "equirectangular",
-                        panorama: "/tour360/cocinacuarto.jpg",
+                        panorama: "/tour360/cocinacuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -748,7 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     bañomujerescuarto: {
                         title: "Baño mujeres",
                         type: "equirectangular",
-                        panorama: "/tour360/bañomujerescuarto.jpg",
+                        panorama: "/tour360/bañomujerescuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
@@ -765,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     bañohombrescuarto: {
                         title: "Baño hombres",
                         type: "equirectangular",
-                        panorama: "/tour360/bañohombrescuarto.jpg",
+                        panorama: "/tour360/bañohombrescuarto.webp",
                         yaw: 5,
                         hfov: 200,
                         hotSpots: [
