@@ -11,7 +11,10 @@
      <div class="relative z-10 text-center w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
          <div class="overflow-hidden mb-6"><span class="text-amber-500 tracking-[0.8em] text-xl font-mono uppercase block translate-y-full hero-title-part">Eventos</span></div>
          <div class="overflow-hidden">
-             <h1 class="text-7xl md:text-[10rem] font-black tracking-tighter uppercase leading-none translate-y-full hero-title-part text-zinc-900 dark:text-white transition-colors duration-500">THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-700">RING</span></h1>
+            <h1 class="text-7xl md:text-[10rem] font-bold italic leading-tight translate-y-full hero-title-part text-zinc-900 dark:text-white transition-colors duration-500 py-2" style="font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', 'Apple Chancery', 'URW Chancery L', cursive;">
+    The <span class="px-3 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-700">Ring</span>
+</h1>
+            <!--  <h1 class="text-7xl md:text-[10rem] font-black tracking-tighter uppercase leading-none translate-y-full hero-title-part text-zinc-900 dark:text-white transition-colors duration-500">THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-700">RING</span></h1> -->
          </div>
          <div class="overflow-hidden mt-8 max-w-2xl">
              <p class="text-zinc-600 dark:text-zinc-400 text-lg md:text-2xl font-light translate-y-full hero-title-part transition-colors duration-500">En tus sueños cada detalle cuenta.</p>
@@ -113,14 +116,6 @@
          <div class="absolute inset-0 z-15 bg-gradient-to-t from-zinc-50 via-transparent to-zinc-50 dark:from-zinc-950 dark:via-transparent dark:to-zinc-950 pointer-events-none opacity-80 transition-colors duration-500"></div>
      </div>
  </section>
-
-
-
-
-
- 
-
-
 
 
  @include('partials.footer')

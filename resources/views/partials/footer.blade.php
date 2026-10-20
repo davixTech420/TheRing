@@ -10,9 +10,12 @@
                     <div class="w-8 h-8 rounded-lg bg-zinc-900  flex items-center justify-center transition-transform group-hover:rotate-12">
                         <img width=50 height=50 src="favicon.ico" alt="The Ring">
                     </div>
-                    <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
-                        Eventos <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">The Ring</span>
-                    </span>
+                   <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
+    Eventos 
+    <span class="normal-case tracking-normal italic font-bold text-3xl px-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600" style="font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', 'Apple Chancery', 'URW Chancery L', cursive;">
+        The Ring
+    </span>
+</span>
                 </a>
                 <p class="text-zinc-500 dark:text-zinc-400 font-light max-w-sm transition-colors">
                     En tus sueños cada detalle cuenta

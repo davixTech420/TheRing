@@ -4,30 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-    /*  ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { @apply bg-zinc-100 dark:bg-zinc-950; }
-        ::-webkit-scrollbar-thumb { @apply bg-zinc-300 dark:bg-zinc-700 rounded-md; }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
-        .animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
-        [x-cloak] { display: none !important; }
-
-       
-        .map-iframe-wrapper iframe {
-            filter: grayscale(100%) contrast(110%);
-            transition: filter 0.7s ease;
-        }
-        .dark .map-iframe-wrapper iframe {
-            filter: grayscale(100%) invert(92%) contrast(110%) hue-rotate(180deg);
-        } */
-
-
-
-        @import "tailwindcss";
-@source "../views";
 
 /* Habilitar modo oscuro por clase */
 @custom-variant dark (&:where(.dark, .dark *));
