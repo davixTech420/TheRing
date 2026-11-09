@@ -16,26 +16,51 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
+                TextColumn::make('user.name')
+                    ->label('Cliente')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('name')
+                    ->label('Nombre del Evento')
+                    ->searchable(),
+
+                TextColumn::make('event_type')
+                    ->label('Tipo')
+                    ->badge()
+                    ->searchable(),
+
+                TextColumn::make('guest_count')
+                    ->label('Invitados')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('event_type')
-                    ->searchable(),
+
                 TextColumn::make('start_date')
-                    ->dateTime()
+                    ->label('Fecha Inicio')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable(),
+
                 TextColumn::make('end_date')
-                    ->dateTime()
+                    ->label('Fecha Fin')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable(),
+
                 TextColumn::make('status')
+                    ->label('Estado')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'confirmed' => 'success',
+                        'cancelled' => 'danger',
+                        default     => 'warning',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'confirmed' => 'Confirmado',
+                        'cancelled' => 'Cancelado',
+                        default     => 'Pendiente',
+                    })
                     ->searchable(),
+
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -3,14 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Event;
 
 class Staff extends Model
 {
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'role',
+    ];
+
     public function events()
-{
-    return $this->belongsToMany(Event::class, 'event_inventory')
-                ->withPivot('quantity', 'customization')
-                ->withTimestamps();
-}
+    {
+        return $this->belongsToMany(Event::class, 'event_staff')
+                    ->withPivot(['status', 'confirmation_token', 'confirmed_at', 'notes'])
+                    ->withTimestamps();
+    }
 }

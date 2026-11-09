@@ -2,7 +2,8 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\RedirectionRole;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -26,6 +27,8 @@ class ClientePanelProvider extends PanelProvider
             ->id('cliente')
             ->path('cliente')
             ->login()
+            ->registration()
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -36,8 +39,7 @@ class ClientePanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Cliente/Widgets'), for: 'App\Filament\Cliente\Widgets')
             ->widgets([
-                AccountWidget::class,
-                
+                \App\Filament\Cliente\Widgets\ClientOverviewWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

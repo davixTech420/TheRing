@@ -27,10 +27,8 @@ class Service extends Model
 
     public function events()
     {
-        // Corrección: La tabla pivote para los servicios es 'event_services', no 'event_inventory'.
-        // Y el campo extra en tu tabla event_services es 'notes'.
         return $this->belongsToMany(Event::class, 'event_services')
-                    ->withPivot('notes')
+                    ->withPivot(['quantity', 'unit_price', 'notes'])
                     ->withTimestamps();
     }
 }

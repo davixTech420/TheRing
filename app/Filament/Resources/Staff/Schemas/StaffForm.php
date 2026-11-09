@@ -12,12 +12,27 @@ class StaffForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->label('Nombre Completo')
+                    ->required()
+                    ->maxLength(255),
+
                 TextInput::make('phone')
+                    ->label('Teléfono / WhatsApp')
                     ->tel()
-                    ->required(),
+                    ->required()
+                    ->maxLength(50),
+
+                TextInput::make('email')
+                    ->label('Correo Electrónico (Para confirmaciones)')
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
+
                 TextInput::make('role')
-                    ->required(),
+                    ->label('Rol / Cargo')
+                    ->required()
+                    ->placeholder('Ej: Coordinador de Protocolo, Diseñador Floral, Técnico de Luces')
+                    ->maxLength(255),
             ]);
     }
 }

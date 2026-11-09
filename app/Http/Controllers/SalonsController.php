@@ -14,16 +14,13 @@ class SalonsController extends Controller
 {
 
 
-public function index(){
-    // Obtener los datos de forma segura usando Eloquent
-        // Usarpaginate() es una buena práctica si tienes muchos registros
-        $salones = Salons::paginate(3); // Cambia 10 por el número de registros que quieras mostrar por página
+    public function index()
+    {
+        $salones = Salons::all();
 
-        // Pasar los datos a la vista Blade
         return view('pages.salones', [
-        'salones' => $salones
-    ]);
-
-}
+            'salones' => $salones
+        ]);
+    }
     
 }

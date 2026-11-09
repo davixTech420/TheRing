@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\Events;
 
-use App\Filament\Resources\Events\Pages\CreateEvent;
 use App\Filament\Resources\Events\Pages\EditEvent;
 use App\Filament\Resources\Events\Pages\ListEvents;
 use App\Filament\Resources\Events\Pages\ViewEvent;
+use App\Filament\Resources\Events\RelationManagers\SalonsRelationManager;
+use App\Filament\Resources\Events\RelationManagers\ServiceRelationManager;
+use App\Filament\Resources\Events\RelationManagers\StaffRelationManager;
 use App\Filament\Resources\Events\Schemas\EventForm;
 use App\Filament\Resources\Events\Schemas\EventInfolist;
 use App\Filament\Resources\Events\Tables\EventsTable;
@@ -22,7 +24,7 @@ class EventResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::CalendarDays;
 
-    protected static ?string $recordTitleAttribute = 'Event';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
     {
@@ -42,7 +44,9 @@ class EventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            SalonsRelationManager::class,
+            ServiceRelationManager::class,
+            StaffRelationManager::class,
         ];
     }
 
@@ -50,6 +54,8 @@ class EventResource extends Resource
     {
         return [
             'index' => ListEvents::route('/'),
+            'view'  => ViewEvent::route('/{record}'),
+            'edit'  => EditEvent::route('/{record}/edit'),
         ];
     }
 }

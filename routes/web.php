@@ -2,41 +2,50 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalonsController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\StaffConfirmationController;
+use App\Models\Salons;
+use App\Models\Service;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+// Acceso y login unificado
+Route::get('/login', function () {
+    if (auth()->check()) {
+        return auth()->user()->role === 'admin'
+            ? redirect('/admin')
+            : redirect('/cliente');
+    }
+
+    return redirect('/cliente/login');
+})->name('login');
 
 Route::get('/', function () {
-    return view('welcome',[SalonsController::class, 'index']);
+    $salones = Salons::all();
+    $servicios = Service::all();
+    return view('welcome', compact('salones', 'servicios'));
 });
 
 Route::get('/salones', [SalonsController::class, 'index']);
 
-
-Route::get('/servicios', function(){
-    return view('pages/servicios');
+Route::get('/servicios', function () {
+    $servicios = Service::all();
+    return view('pages.servicios', compact('servicios'));
 });
 
-
-Route::get('/experiencia', function(){
-    return view('pages/experiencia');
+Route::get('/experiencia', function () {
+    return view('pages.experiencia');
 });
 
-Route::get('/reservas', function(){
-    return view('pages/reservas');
-});
+// Rutas de Reservas conectadas al backend
+Route::get('/reservas', [ReservationController::class, 'index'])->name('reservas.index');
+Route::post('/reservas', [ReservationController::class, 'store'])->name('reservas.store');
 
-Route::get('/cliente/login', function () {
-    return redirect('/admin/login');
-})->name('filament.cliente.auth.login');
-
-
-
-
-
+// Confirmación de Staff vía Email
+Route::get('/staff/confirm/{token}', [StaffConfirmationController::class, 'confirm'])->name('staff.confirm');
+Route::get('/staff/decline/{token}', [StaffConfirmationController::class, 'decline'])->name('staff.decline');
 
 Route::get('/tour360/{filename}', function ($filename) {
-    // Busca la foto físicamente en tu carpeta storage
     $path = storage_path('app/public/360/' . $filename);
     
     if (!File::exists($path)) {
@@ -48,11 +57,7 @@ Route::get('/tour360/{filename}', function ($filename) {
     
     $response = Response::make($file, 200);
     $response->header("Content-Type", $type);
-    
-    // LA CLAVE: Forzamos el permiso de lectura para el canvas 3D
     $response->header("Access-Control-Allow-Origin", "*"); 
     
     return $response;
 });
-
-

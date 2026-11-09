@@ -57,17 +57,21 @@ class User extends Authenticatable implements FilamentUser
     return $this->hasMany(Event::class);
 }
 
-public function canAccessPanel(\Filament\Panel $panel): bool
-{
-    // Dejamos que el cliente entre al admin SOLO para que el login funcione
-    if ($panel->getId() === 'admin') {
-        return $this->role === 'admin' || $this->role === 'client';
+    protected static function booted(): void
+    {
+        static::creating(function (User $user) {
+            // Todo nuevo usuario registrado recibe por defecto el rol 'client'
+            if (empty($user->role)) {
+                $user->role = 'client';
+            }
+        });
     }
 
-    if ($panel->getId() === 'cliente' || $panel->getId() === 'client') {
-        return $this->role === 'client';
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        // Tanto el rol 'admin' como 'client' tienen acceso autorizado a la plataforma de Filament
+        // para permitir el inicio de sesión unificado desde cualquier ruta (/login, /cliente/login, /admin/login).
+        // La seguridad estricta y separación de paneles se garantiza mediante los middlewares Authenticate y RedirectionRole.
+        return in_array($this->role, ['admin', 'client']);
     }
-
-    return false;
-}
 }

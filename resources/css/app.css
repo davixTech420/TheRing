@@ -62,6 +62,105 @@
     filter: grayscale(100%) invert(92%) contrast(110%) hue-rotate(180deg); 
 }
 
+/* =========================================
+   4. ESTILOS PANNELLUM (TOUR VIRTUAL 360° STREET VIEW)
+========================================= */
+.pnlm-container {
+    background-color: #09090b !important;
+    font-family: inherit !important;
+}
+
+/* Eliminar el fundido a negro prolongado que bloquea los clics */
+.pnlm-fade-img {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* Área de clic generosa y estable (NUNCA alterar transform aquí para no romper las coordenadas 3D) */
+.pnlm-hotspot-base {
+    cursor: pointer !important;
+    z-index: 25 !important;
+}
+
+/* BOTÓN DE NAVEGACIÓN ESTILO GOOGLE STREET VIEW */
+.pnlm-hotspot-base.pnlm-scene {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 9999px !important;
+    /* Fondo oscuro traslúcido de alto contraste con flecha chevron ámbar hacia adelante */
+    background-color: rgba(15, 15, 20, 0.88) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 24px 24px !important;
+    border: 2.5px solid #f59e0b !important;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35), 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(245, 158, 11, 0.25) !important;
+    cursor: pointer !important;
+    animation: pnlmStreetViewPulse 2s infinite ease-in-out !important;
+    /* IMPORTANTE: Transicionar solo color/sombra, NUNCA 'transform' para evitar parpadeos o saltos */
+    transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+
+/* Hover interactivo de alta gama: se ilumina intensamente sin moverse de posición */
+.pnlm-hotspot-base.pnlm-scene:hover {
+    background-color: #f59e0b !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2309090b' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E") !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.65), 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.9) !important;
+}
+
+/* Efecto de onda Street View en el suelo */
+@keyframes pnlmStreetViewPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45), 0 6px 18px rgba(0, 0, 0, 0.65);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0.15), 0 8px 26px rgba(245, 158, 11, 0.5);
+    }
+}
+
+/* Tooltip / Cartel indicador Street View elegante */
+div.pnlm-tooltip span {
+    background: rgba(10, 10, 14, 0.94) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.7) !important;
+    border-radius: 9999px !important;
+    padding: 7px 16px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    pointer-events: none !important; /* CLAVE: Nunca bloquea el clic ni el hover del hotspot */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 15px rgba(245, 158, 11, 0.25) !important;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease !important;
+}
+
+.pnlm-hotspot-base:hover div.pnlm-tooltip span {
+    border-color: #f59e0b !important;
+    background: rgba(10, 10, 14, 0.98) !important;
+    color: #fef08a !important;
+}
+
+div.pnlm-tooltip span:after {
+    border-top-color: rgba(10, 10, 14, 0.94) !important;
+}
+
+/* Ocultar marca de agua y controles por defecto para usar los nuestros */
+.pnlm-about-msg {
+    display: none !important;
+}
+.pnlm-controls-container {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.pnlm-controls-container:hover {
+    opacity: 1;
+}
+
+
 
 
 

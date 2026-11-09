@@ -62,15 +62,38 @@
                     </button>
 
                     {{-- Botón de acceso al Dashboard Filament --}}
-                    <a href="/cliente" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
-                        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span class="relative flex items-center gap-2">
-                            Panel Cliente
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </span>
-                    </a>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <a href="/admin" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-amber-500 text-black font-bold tracking-widest text-xs uppercase transition-all hover:scale-105 shadow-md shadow-amber-500/20">
+                                <span class="relative flex items-center gap-2">
+                                    Panel Admin
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        @else
+                            <a href="/cliente" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
+                                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                <span class="relative flex items-center gap-2">
+                                    Mi Panel
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        @endif
+                    @else
+                        <a href="/login" class="relative group px-6 py-2.5 rounded-full overflow-hidden bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold tracking-widest text-xs uppercase transition-all hover:scale-105">
+                            <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="relative flex items-center gap-2">
+                                Ingresar
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    @endauth
                 </div>
 
                 {{-- BOTÓN HAMBURGUESA (MÓVIL) --}}
@@ -115,9 +138,21 @@
                 <a href="/reservas" @click="mobileMenuOpen = false" class="text-3xl font-black uppercase text-zinc-900 dark:text-white hover:text-amber-500 transition-colors">Reservas</a>
 
                 <div class="pt-8 w-full border-t border-zinc-200 dark:border-zinc-800">
-                    <a href="/admin" class="block w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold uppercase tracking-widest rounded-2xl">
-                        Panel Cliente
-                    </a>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <a href="/admin" class="block w-full py-4 bg-amber-500 text-black font-bold uppercase tracking-widest rounded-2xl text-center">
+                                Panel Administrador
+                            </a>
+                        @else
+                            <a href="/cliente" class="block w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold uppercase tracking-widest rounded-2xl text-center">
+                                Mi Panel
+                            </a>
+                        @endif
+                    @else
+                        <a href="/login" class="block w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold uppercase tracking-widest rounded-2xl text-center">
+                            Ingresar / Registrarse
+                        </a>
+                    @endauth
                 </div>
             </div>
         </div>
