@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->foreignId('dress_id')->nullable()->after('guest_count')->constrained('dresses')->nullOnDelete();
-            $table->string('location_type')->default('the_ring')->after('dress_id'); // 'the_ring', 'external_the_ring', 'client_location'
+            $table->string('location_type')->default('the_ring'); // 'the_ring', 'external_the_ring', 'client_location'
         });
     }
 
