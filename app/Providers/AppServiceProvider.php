@@ -7,6 +7,7 @@ use App\Http\Responses\RegistrationResponse as CustomRegistrationResponse;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Http\Responses\Contracts\RegistrationResponse;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; // <-- 1. Importa la fachada URL
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // 2. Forzar HTTPS estrictamente cuando estés en producción
+        if (app()->environment('production')) {
+            URL::forceHttps();
+        }
     }
 }
