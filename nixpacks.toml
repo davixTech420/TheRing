@@ -1,6 +1,14 @@
 [variables]
 NIXPACKS_PHP_VERSION = "8.5"
 
+[phases.install]
+cmds = [
+    "curl -fsSL https://deb.nodesource.com/setup_26.x | sudo -E bash - && sudo apt-get install -y nodejs",
+    "node -v && npm -v",
+    "composer install --ignore-platform-reqs",
+    "rm -rf node_modules package-lock.json && npm install"
+]
+
 [phases.build]
 cmds = [
     'npm run build',
@@ -10,4 +18,4 @@ cmds = [
 ]
 
 [start]
-cmd =  'php artisan serve --host=0.0.0.0 --port=8002'
+cmd =  'php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8002'
