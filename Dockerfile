@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    && docker-php-ext-install pdo_mysql mysqli
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install pdo_mysql mysqli intl
 
 # Instalar Node.js 26 de forma oficial (incluye la versión 26.13.0+)
 RUN curl -fsSL https://deb.nodesource.com/setup_26.x | bash - \
