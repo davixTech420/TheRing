@@ -1,5 +1,6 @@
 [variables]
 NIXPACKS_PHP_VERSION = "8.5"
+NIXPACKS_NODE_VERSION = "26"
 
 [phases.install]
 cmds = [
