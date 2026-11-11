@@ -8,7 +8,7 @@
             <div class="lg:col-span-4 space-y-6">
                 <a href="/" class="flex items-center gap-2 group inline-flex">
                     <div class="w-8 h-8 rounded-lg bg-zinc-900  flex items-center justify-center transition-transform group-hover:rotate-12">
-                        <img width=50 height=50 src="favicon.ico" alt="The Ring">
+                        <img width=50 height=50 src="/favicon.ico" alt="The Ring">
                     </div>
                    <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
     Eventos 
@@ -103,6 +103,8 @@
         Agenda tu evento
     </div>
 </div>
-</body>
 
+@unless (request()->routeIs('filament.*'))
+</body>
 </html>
+@endunless

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asignación de Evento — The Ring</title>
+    <title>Asignación de Evento — Eventos The Ring</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #09090b; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #09090b; padding: 40px 20px;">
@@ -15,10 +15,10 @@
                     <tr>
                         <td align="center" style="padding: 40px 30px 20px 30px; border-bottom: 1px solid #27272a;">
                             <h1 style="margin: 0; font-size: 28px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: #ffffff;">
-                                THE <span style="color: #f59e0b;">RING</span>
+                                Eventos<span style="color: #f59e0b;">The Ring</span>
                             </h1>
                             <p style="margin: 5px 0 0 0; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #71717a; font-family: monospace;">
-                                Staff Logistics & Protocol
+                                Boutique y logistica
                             </p>
                         </td>
                     </tr>

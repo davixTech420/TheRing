@@ -36,6 +36,22 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->registration()
             ->passwordReset()
+            ->renderHook(
+        PanelsRenderHook::BODY_START,
+        fn (): string => request()->routeIs([
+            'filament.admin.auth.login',
+            'filament.admin.auth.register',
+            'filament.admin.auth.password-reset.*',
+        ]) ? view('partials.header')->render() : '',
+    )
+    ->renderHook(
+        PanelsRenderHook::BODY_END,
+        fn (): string => request()->routeIs([
+            'filament.admin.auth.login',
+            'filament.admin.auth.register',
+            'filament.admin.auth.password-reset.*',
+        ]) ? view('partials.footer')->render() : '',
+    )
             ->colors([
                 'primary' => Color::Amber,
             ])

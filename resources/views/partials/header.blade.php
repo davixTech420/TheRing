@@ -1,14 +1,28 @@
+@if (request()->routeIs('filament.*'))
+    {{-- En Filament ya existen <html>, <head> y <body>, así que solo cargamos los assets --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    {{-- Contenedor con el mismo x-data de tu html para que el botón toggleTheme() siga funcionando en Filament --}}
+    <div x-data="{ 
+        theme: localStorage.getItem('theme') || 'dark', 
+        toggleTheme() { 
+            this.theme = this.theme === 'dark' ? 'light' : 'dark'; 
+            localStorage.setItem('theme', this.theme);
+            document.documentElement.classList.toggle('dark', this.theme === 'dark');
+            window.dispatchEvent(new CustomEvent('theme-changed', { detail: this.theme }));
+        } 
+    }">
+@else
 <!DOCTYPE html>
 <html lang="es" x-data="{ theme: localStorage.getItem('theme') || 'dark', toggleTheme() { this.theme = this.theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('theme', this.theme); } }" :class="theme">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos The Ring</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans antialiased overflow-x-hidden selection:bg-amber-500 selection:text-black transition-colors duration-500 relative">
+@endif
 
 
     <nav x-data="{ 
@@ -29,7 +43,7 @@
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center gap-2 group">
                         <div class="w-8 h-8 rounded-lg   flex items-center justify-center transition-transform group-hover:rotate-12">
-                            <img width=50 height=50 src="favicon.ico" alt="The Ring">
+                            <img width=50 height=50 src="/favicon.ico" alt="The Ring">
                         </div>
                         <span class="text-2xl font-black tracking-tighter uppercase text-zinc-900 dark:text-white">
     Eventos 

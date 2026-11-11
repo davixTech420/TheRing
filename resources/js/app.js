@@ -6,8 +6,12 @@ import "pannellum/build/pannellum.css";
 import "pannellum/build/pannellum.js";
 
 // 1. Inicializar Alpine.js
-window.Alpine = Alpine;
-Alpine.start();
+/* window.Alpine = Alpine;
+Alpine.start(); */
+if (!window.Livewire && !document.querySelector('.fi-body')) {
+    window.Alpine = Alpine;
+    Alpine.start();
+}
 
 // 2. Registrar GSAP
 gsap.registerPlugin(ScrollTrigger);

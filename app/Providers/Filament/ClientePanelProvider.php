@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\RedirectionRole;
+use Filament\View\PanelsRenderHook;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -29,6 +30,23 @@ class ClientePanelProvider extends PanelProvider
             ->login()
             ->registration()
             ->passwordReset()
+            
+            ->renderHook(
+        PanelsRenderHook::BODY_START,
+        fn (): string => request()->routeIs([
+            'filament.cliente.auth.login',
+            'filament.cliente.auth.register',
+            'filament.cliente.auth.password-reset.*',
+        ]) ? view('partials.header')->render() : '',
+    )
+    ->renderHook(
+        PanelsRenderHook::BODY_END,
+        fn (): string => request()->routeIs([
+            'filament.cliente.auth.login',
+            'filament.cliente.auth.register',
+            'filament.cliente.auth.password-reset.*',
+        ]) ? view('partials.footer')->render() : '',
+    )
             ->colors([
                 'primary' => Color::Amber,
             ])
