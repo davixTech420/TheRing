@@ -26,10 +26,10 @@
             <div class="lg:col-span-2">
                 <h4 class="text-zinc-900 dark:text-white font-bold uppercase tracking-widest text-sm mb-6 transition-colors">Explorar</h4>
                 <ul class="space-y-4">
-                    <li><a href="/salones" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Salones Inteligentes</a></li>
+                    <li><a href="/salones" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Salones</a></li>
                     
                     
-                    <li><a href="/reservas" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Motor de Reservas</a></li>
+                    <li><a href="/reservas" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-500 transition-colors text-sm">Cotizacion</a></li>
                 </ul>
             </div>
 

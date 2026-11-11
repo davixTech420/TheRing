@@ -921,7 +921,7 @@
                 <div x-show="event.location_type === 'external_the_ring'" x-transition class="p-6 rounded-3xl border border-emerald-500/30 bg-emerald-500/5 space-y-6">
                     <div class="flex items-center gap-3">
                         <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-xs uppercase font-bold tracking-widest">Servicio Concierge</span>
-                        <h3 class="text-base font-bold text-zinc-900 dark:text-white">The Ring Consigue & Gestiona tu Locación Externa</h3>
+                        <h3 class="text-base font-bold text-zinc-900 dark:text-white"> Eventos The Ring Consigue & Gestiona tu Locación Externa</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -951,7 +951,7 @@
                 <div x-show="event.location_type === 'client_location'" x-transition class="p-6 rounded-3xl border border-purple-500/30 bg-purple-500/5 space-y-6">
                     <div class="flex items-center gap-3">
                         <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 font-mono text-xs uppercase font-bold tracking-widest">Producción a Domicilio</span>
-                        <h3 class="text-base font-bold text-zinc-900 dark:text-white">Tu Lugar Propio: The Ring Monta la Magia</h3>
+                        <h3 class="text-base font-bold text-zinc-900 dark:text-white">Tu Lugar Propio:Eventos The Ring Monta la Magia</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

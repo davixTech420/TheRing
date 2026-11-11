@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class ServicesTable
@@ -16,6 +17,17 @@ class ServicesTable
     {
         return $table
             ->columns([
+                ImageColumn::make('images')
+                    ->label('Image')
+                    ->disk('public')
+                    ->square()
+                    ->stacked()
+                    ->overlap(1)
+    ->height(40) // Controla la altura fija para que no deforme la fila
+    ->circular(false)
+    ->limit(2)
+    ->limitedRemainingText(),
+
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('category')

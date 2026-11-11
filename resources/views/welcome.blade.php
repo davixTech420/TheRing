@@ -27,8 +27,8 @@
 
  {{-- 2. CINTA DE CAPACIDADES --}}
  <div class="w-full bg-amber-500 py-3 overflow-hidden border-y border-amber-600 relative z-20 flex whitespace-nowrap">
-     <div class="animate-marquee flex items-center text-zinc-950 font-black uppercase text-sm tracking-widest"><span class="mx-8">• Sincronización JSON</span><span class="mx-8">• Gestión de Aforos en Tiempo Real</span><span class="mx-8">• Control de Inventario</span><span class="mx-8">• Asignación de Staff Dinámica</span><span class="mx-8">• Arquitectura Modular</span></div>
-     <div class="animate-marquee flex items-center text-zinc-950 font-black uppercase text-sm tracking-widest" aria-hidden="true"><span class="mx-8">• Sincronización JSON</span><span class="mx-8">• Gestión de Aforos en Tiempo Real</span><span class="mx-8">• Control de Inventario</span><span class="mx-8">• Asignación de Staff Dinámica</span><span class="mx-8">• Arquitectura Modular</span></div>
+     <div class="animate-marquee flex items-center text-zinc-950 font-black uppercase text-sm tracking-widest"><span class="mx-8">• Cotizacion Dinámica</span><span class="mx-8">• Navegación por Espacios</span><span class="mx-8">• Asignación de personal para tu evento</span><span class="mx-8">• Ajustes Personalizados</span></div>
+     <div class="animate-marquee flex items-center text-zinc-950 font-black uppercase text-sm tracking-widest" aria-hidden="true"><span class="mx-8">• Control de Inventario</span><span class="mx-8">• Asignación de Staff Dinámica</span></div>
  </div>
 
 
@@ -39,10 +39,10 @@
          <div class="panel w-screen h-screen flex items-center justify-center px-6 md:px-20 relative">
              <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl items-center">
                  <div class="space-y-6"><span class="text-8xl font-black text-zinc-200 dark:text-zinc-900 absolute -top-10 -left-10 select-none transition-colors duration-500">01</span>
-                     <h2 class="text-5xl md:text-7xl font-black text-zinc-900 dark:text-white relative z-10">Salones<br>Inteligentes</h2>
-                     <p class="text-zinc-600 dark:text-zinc-400 text-xl font-light">Mapeo de espacios con capacidad dinámica. Asigna el recinto perfecto en milisegundos.</p>
+                     <h2 class="text-5xl md:text-7xl font-black text-zinc-900 dark:text-white relative z-10">Salones<br>Tematicos</h2>
+                     <p class="text-zinc-600 dark:text-zinc-400 text-xl font-light">Personalizacion de tu espacio con estilo y funcionalidad. ajustado a tus necesidades y tu gusto</p>
                  </div>
-                 <div class="reveal-img-container h-[60vh] rounded-[2rem] overflow-hidden shadow-2xl"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Salones"></div>
+                 <div class="reveal-img-container h-[60vh] rounded-[2rem] overflow-hidden shadow-2xl"><img src="images/salon.jpg" class="w-full h-full object-cover" alt="Salones"></div>
              </div>
          </div>
          <div class="panel w-screen h-screen flex items-center justify-center px-6 md:px-20 relative">
@@ -66,7 +66,7 @@
          <div class="panel w-screen h-screen flex items-center justify-center px-6 md:px-20 relative bg-zinc-200/50 dark:bg-zinc-900/50 transition-colors duration-500">
              <div class="text-center max-w-4xl mx-auto space-y-8">
                  <h2 class="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600">Gestión a Medida</h2>
-                 <p class="text-zinc-600 dark:text-zinc-400 text-2xl font-light">Personaliza tu evento al 100% en el motor de reservas a continuación.</p>
+                 <p class="text-zinc-600 dark:text-zinc-400 text-2xl font-light">Personaliza tu evento al 100% a continuación.</p>
              </div>
          </div>
      </div>
